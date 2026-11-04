@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#f7f4ee">
+<title>Liajer Savonnerie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Liajer: warm paper page, cream cards, beige product tiles, near-black ink. Layout: centred logo + nav, banner hero, 4-up shop grid, two-column product pages. */
+  --paper:#f9f7f3; --card:#f3eee8; --tile:#ddd4c5; --ink:#1a1917; --muted:#6c665e; --line:#e3dcd1;
+  --display:"Newsreader", "Iowan Old Style", Georgia, serif;
+  --body:"Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  color-scheme:light;
+  --edge:max(24px, calc((100vw - 1192px) / 2));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-.01em}
+.eyebrow{font-family:var(--body);font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase}
+
+/* header */
+.ticker{background:#efe7dc;border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.tk-track{display:inline-flex;animation:tk 60s linear infinite;padding:13px 0}
+.ticker:hover .tk-track{animation-play-state:paused}
+.tk-item{display:inline-flex;align-items:center;gap:16px;padding:0 36px;font-size:17px;letter-spacing:.02em;color:#3d3731}
+.tk-item b{font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:#8a4e38}
+.hero .copy .ffhero,.ffhero{font-family:var(--body);font-style:normal;display:inline-flex;flex-direction:column;gap:3px;align-self:flex-start;margin:0 0 22px;padding:11px 16px;border:1px solid #d9b8a6;background:#f6ebe3;border-left:3px solid #8a4e38;max-width:30rem}
+.hero .copy .ffhero b,.ffhero b{font-family:var(--body);font-style:normal;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:#8a4e38}
+.hero .copy .ffhero span,.ffhero span{font-family:var(--body);font-style:normal;font-size:15.5px;line-height:1.45;color:#3d3731}
+@media (max-width:820px){.hero .copy .ffhero,.ffhero{align-self:center;text-align:center;border-left-width:1px;border-top:3px solid #8a4e38}}
+.dnote{background:#efe7dc;border:1px solid var(--line);padding:14px 18px;margin-top:14px;display:grid;gap:10px}
+.dnote p{margin:0;font-size:15px;line-height:1.5;color:#3d3731}
+.dnote b{display:block;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:#8a4e38;margin-bottom:2px}
+.tk-item i{font-style:normal;color:#b89c86;font-size:14px}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.tk-track{animation:none}}
+.annc{background:#6f4434;color:#fbf3ee;text-align:center;font-size:14px;letter-spacing:.06em;padding:9px 16px;line-height:1.4}
+header.site{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:20}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.top{max-width:1240px;margin:0 auto;padding:16px 24px 6px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+.search{display:flex;align-items:center;gap:14px;justify-self:start;width:100%;max-width:340px}
+.search input{flex:1;min-width:0;font:inherit;font-size:20px;background:transparent;border:0;border-bottom:1.5px solid var(--ink);padding:8px 0;color:var(--ink);border-radius:0}
+.search{position:relative;flex-wrap:wrap;row-gap:0}
+.search[hidden]{display:none !important}
+@media (min-width:821px){.top .hdr-contact{grid-column:1}.top .brand{grid-column:2}.top .tools{grid-column:3}}
+.hdr-contact{justify-self:start;display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#4d4842;font-size:16px;letter-spacing:.02em;padding:6px 0;border-bottom:1px solid transparent}
+.hdr-contact:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.hdr-contact svg{color:var(--ink)}
+@media (max-width:820px){.hdr-contact{display:none}}
+.q-hint{flex-basis:calc(100% - 38px);margin:5px 0 0 38px;font-size:14.5px;color:#5c564f;letter-spacing:.01em}
+@media (max-width:820px){.q-hint{margin-left:38px;font-size:13.5px}}
+.q-results{position:absolute;left:38px;right:0;top:calc(100% + 6px);background:#fffdf9;border:1px solid var(--line);box-shadow:0 14px 34px rgba(40,30,20,.12);z-index:50;max-height:70vh;overflow:auto}
+.q-results a{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center;padding:10px 12px;text-decoration:none;border-bottom:1px solid var(--line)}
+.q-results a:hover,.q-results a.on{background:#f3eee8}
+.q-results img{width:52px;height:52px;object-fit:cover;background:var(--tile)}
+.q-results b{display:block;font-family:var(--display);font-weight:400;font-size:19px}
+.q-results small{color:var(--muted);font-size:13px;line-height:1.35;display:block}
+.q-results .q-empty{padding:14px;color:var(--muted);font-size:15px}
+.q-results .q-all{display:block;padding:12px;text-align:center;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+@media (max-width:820px){.q-results{left:0}}
+.search input::-webkit-search-cancel-button{filter:grayscale(1) brightness(.4)}
+.search input::placeholder{color:#9a948b}
+.search input:focus{outline:none;border-bottom-width:2px}
+.brand{display:flex;flex-direction:column;align-items:center;gap:7px;text-decoration:none}
+.brand .full{height:96px;width:auto;display:block}
+.tools{justify-self:end;display:flex;align-items:center;gap:30px;position:relative}
+.lang{display:flex;gap:12px;font-size:17px;letter-spacing:.14em;color:var(--muted)}
+.lang a{text-decoration:none;color:var(--muted);padding-bottom:3px;border-bottom:1.5px solid transparent}
+.lang a[aria-current="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.cart{position:relative;width:56px;height:56px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+.cart .count{position:absolute;top:-6px;right:-6px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--paper);font-size:14px;font-weight:600;display:grid;place-items:center;padding:0 6px}
+.cart-pop{position:absolute;right:0;top:70px;background:#fffdf9;border:1px solid var(--line);padding:16px 18px;width:240px;display:flex;flex-direction:column;gap:4px;font-size:15px;color:var(--muted);box-shadow:0 10px 30px rgba(40,30,20,.08)}
+.cart-pop b{color:var(--ink);font-weight:600}
+nav.main{display:flex;justify-content:center;gap:56px;padding-top:22px}
+nav.main a{text-decoration:none;font-size:20px;color:var(--ink);padding:8px 0 12px;border-bottom:2px solid transparent}
+nav.main a[aria-current="page"],nav.main a:hover{border-bottom-color:var(--ink)}
+@media (max-width:820px){
+  .top{grid-template-columns:1fr auto;grid-template-areas:"brand tools";padding:12px 16px 4px}
+  .brand{grid-area:brand;justify-self:start;flex-direction:row;gap:10px}
+  .brand .full{height:62px}
+  .tools{grid-area:tools;gap:16px}
+  .search{grid-area:search;max-width:none}
+  .search input{font-size:17px}
+  .lang{font-size:15px}
+  .cart{width:46px;height:46px}
+  nav.main{gap:14px;flex-wrap:wrap;padding:12px 8px 0}
+  nav.main a{font-size:15px}
+}
+.noresults{grid-column:1/-1;text-align:center;color:var(--muted);padding:30px 0}
+
+/* hero: editorial split */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:min(78vh,760px);background:#f6f2ec}
+.hero .copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:22px;padding:64px clamp(24px,5vw,80px) 64px var(--edge)}
+.hero h1{font-size:clamp(38px,4.6vw,70px);line-height:1.04;max-width:13ch;font-weight:400}
+.hero p{font-family:var(--display);font-size:clamp(18px,1.6vw,23px);margin:0;color:var(--muted);font-style:italic}
+.hero .rule{width:56px;height:1px;background:var(--ink);opacity:.5}
+.hero .media{position:relative;overflow:hidden}
+.hero .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.hero .hero-note{margin-top:22px;padding-top:18px;border-top:1px solid rgba(26,25,23,.15);display:flex;flex-direction:column;gap:4px;font-family:var(--body);font-style:normal;font-size:15px;color:var(--muted)}
+.hero-note .hn-k{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#a0634b}
+.textlink{font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:4px}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero .media{height:440px}
+  .hero .copy{padding:44px 24px 40px;align-items:center;text-align:center}
+}
+/* story: photo left, text right */
+#handmade-section{max-width:none;padding:0}
+.story-bg{display:grid;grid-template-columns:1fr 1fr;background:#f6f2ec;min-height:620px}
+.story-bg .ph{background:url(story_left.jpg) 45% 60%/cover no-repeat;min-height:420px}
+.story-bg .story{display:flex;flex-direction:column;justify-content:center;padding:72px var(--edge) 72px clamp(24px,5vw,80px)}
+.story-bg .txt{max-width:30rem}
+.story-bg .facts{margin-top:30px;max-width:30rem}
+@media (max-width:860px){.story-bg{grid-template-columns:1fr}.story-bg .story{padding:44px 24px}}
+
+/* sections */
+section.block{scroll-margin-top:220px;max-width:1240px;margin:0 auto;padding:72px 24px}
+#shop-section{padding-top:36px}
+.section-head{text-align:center;display:flex;flex-direction:column;gap:10px;margin-bottom:44px}
+.section-head h2{font-size:clamp(34px,4vw,52px);line-height:1.12}
+.section-head p{margin:0;color:var(--muted)}
+
+/* shop grid */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media (max-width:1080px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:460px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);padding:16px;display:flex;flex-direction:column;text-decoration:none}
+.card .ph{position:relative;background:var(--tile)}
+.card .ph img{aspect-ratio:1;object-fit:cover;width:100%}
+.badge{position:absolute;top:16px;left:16px;background:#fffdf9;padding:7px 13px;font-size:12px;font-weight:600;letter-spacing:.2em}
+.card h3{font-size:30px;margin:20px 6px 8px}
+.xmas{margin:18px auto 0;max-width:46rem;display:flex;gap:16px;align-items:center;text-align:left;background:#f3e6df;border:1px solid #e7cfc3;padding:18px 22px;color:#8a5a46}
+.xmas b{display:block;color:#6f4434;font-weight:600;font-size:18px;margin-bottom:2px}
+.xmas span{font-size:16px;line-height:1.55}
+.base{margin:20px auto 0;width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.base-t{display:block;font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#6c665e;text-align:center}
+.base-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0 0;padding:0;list-style:none}
+.base-chips+.base-chips{margin-top:10px}
+.base-chips li{border:1px solid #d8cdbf;border-radius:999px;padding:8px 18px;font-size:16px;background:#fffdf9;color:var(--ink)}
+.base-chips.s li{background:transparent;color:#6c665e;border-style:dashed}
+.section-head .base-n{margin:18px auto 0;max-width:740px;font-size:15px;line-height:1.65;color:var(--muted);text-align:center;text-wrap:balance}
+@media (max-width:560px){.base-chips{gap:8px}.base-chips li{font-size:14px;padding:7px 14px}}
+.opt-tag{color:var(--muted)}
+.card .notes .num{color:var(--ink);font-weight:600}
+.card .notes{margin:0 6px;color:var(--muted);font-size:16px;line-height:1.5}
+.card .wt{margin:16px 6px 0;font-size:16px}
+.card .foot{margin:auto 6px 0;padding-top:22px;display:flex;align-items:center;justify-content:space-between}
+.price{font-family:var(--display);font-size:24px}
+.bag{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fffdf9;display:grid;place-items:center}
+.card:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+
+/* story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.story .txt{display:flex;flex-direction:column;gap:18px;max-width:34rem}
+.story h2{font-size:clamp(32px,3.6vw,46px)}
+.story p{margin:0;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.facts div{background:var(--card);padding:26px 18px;text-align:center}
+.facts b{display:block;font-family:var(--display);font-weight:400;font-size:34px}
+.facts span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:800px){.story{grid-template-columns:1fr}}
+
+/* product page */
+.crumbs{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.crumbs a{text-decoration:none}
+.crumbs a:hover{color:var(--ink)}
+.product{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start}
+@media (max-width:860px){.product{grid-template-columns:1fr;gap:32px}}
+.gallery{display:flex;flex-direction:column;gap:12px}
+.gallery .main{background:var(--tile)}
+.gallery .main img{width:100%;aspect-ratio:1;object-fit:cover}
+.thumbs{display:flex;gap:12px}
+.thumbs button{border:1px solid var(--line);background:var(--card);padding:0;width:88px;cursor:pointer}
+.thumbs button[aria-pressed="true"]{border-color:var(--ink)}
+.thumbs img{width:100%;aspect-ratio:1;object-fit:cover}
+.info{display:flex;flex-direction:column;gap:18px}
+.info .no{color:var(--muted);font-size:14px;letter-spacing:.2em;text-transform:uppercase}
+.info h1{font-size:clamp(40px,5vw,60px);line-height:1.02}
+.info .fr{font-family:var(--display);font-size:22px;color:var(--muted);margin-top:-8px}
+.info p{margin:0;max-width:34rem}
+.info .desc-fr{color:var(--muted);font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{border:1px solid var(--line);background:var(--card);padding:6px 12px;font-size:14px}
+.opt{border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.opt legend{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:0;margin-bottom:10px}
+.opt-row{display:flex;gap:10px;flex-wrap:wrap}
+.opt-row label{position:relative;cursor:pointer}
+.opt-row input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt-row span{display:inline-block;border:1px solid var(--line);background:var(--card);padding:11px 18px;font-size:15px}
+.opt-row input:checked+span{border-color:var(--ink);background:#fffdf9;box-shadow:inset 0 0 0 1px var(--ink)}
+.opt-row input:focus-visible+span{outline:2px solid var(--ink);outline-offset:3px}
+.opt-note{font-size:15px;color:var(--muted);font-style:italic;margin:0}
+.buy{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.buy .price{font-size:30px}
+.buy .wt{color:var(--muted)}
+.btn{font:inherit;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;background:var(--ink);color:var(--paper);border:0;padding:15px 26px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.note{font-size:14px;color:var(--muted);min-height:1.2em;margin:0}
+.ingr h2{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+.ingr p{font-size:16px;color:var(--muted);line-height:1.7}
+.ingr b{color:var(--ink);font-weight:600}
+.pn{display:flex;justify-content:space-between;gap:16px;margin-top:64px;padding-top:24px;border-top:1px solid var(--line)}
+.pn a{text-decoration:none;display:flex;flex-direction:column;gap:2px}
+.pn a span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.pn a b{font-family:var(--display);font-weight:400;font-size:24px}
+.pn a:last-child{text-align:right}
+
+.faq{max-width:58rem;margin:0 auto;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 4px;font-family:var(--display);font-size:clamp(20px,2vw,26px);line-height:1.25}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--body);font-size:28px;font-weight:300;color:var(--muted);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq summary:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.faq p{margin:0;padding:0 4px 28px;color:var(--muted);max-width:44rem;font-size:17px}
+/* product detail, three columns */
+.pd{display:grid;grid-template-columns:1.15fr 1fr;gap:0;align-items:start}
+.pd-gallery,.pd-life{position:sticky;top:196px;height:min(calc(100vh - 196px),900px);min-height:520px}
+.pd-gallery{background:#e3ddd3;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.pd-gallery .main{flex:1;display:grid;place-items:center}
+.pd-gallery .main{position:absolute;inset:0;overflow:hidden;display:block}
+.pd-gallery .main img{width:100%;height:100%;object-fit:contain;object-position:50% 50%}
+
+.pd-gallery .thumbs{display:flex;gap:10px;padding:14px;position:absolute;left:0;bottom:0}
+.pd-gallery .thumbs button{border:1px solid rgba(0,0,0,.08);background:#f3eee8;padding:0;width:74px;cursor:pointer}
+.pd-gallery .thumbs button[aria-pressed="true"]{border-color:var(--ink)}
+.pd-gallery .thumbs img{width:100%;aspect-ratio:1;object-fit:cover}
+.pd-life{overflow:hidden;background:#e9e3da}
+.pd-life img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.pd-info{padding:44px clamp(24px,3.5vw,56px) 40px;display:flex;flex-direction:column;gap:16px}
+.pd-info .crumbs{margin:0;text-transform:none;letter-spacing:0;font-size:16px}
+.pd-info .crumbs a{color:#b46f55}
+.tag{align-self:flex-start;background:var(--ink);color:var(--paper);font-size:13px;font-weight:600;letter-spacing:.2em;padding:7px 14px}
+.pd-info h1{font-size:clamp(42px,4.4vw,66px);line-height:1}
+.pd-info .fr{font-family:var(--display);font-size:22px;color:var(--muted);margin-top:-6px}
+.pd-notes{margin:0;color:var(--muted);font-size:17px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.pd-price{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.pd-price .price{font-size:34px}
+.muted{color:var(--muted)} .small{font-size:15px;margin:0}
+.label{font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.made{display:flex;flex-direction:column;gap:6px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.made h3{font-size:26px;margin-top:10px}
+.made .d{margin:2px 0 0;color:var(--muted);font-size:16px}
+.made > p{margin:14px 0 0;font-size:17px}
+.row{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line);color:var(--muted)}
+.size{border:1px solid var(--ink);color:var(--ink);padding:9px 16px}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:6px}
+.qty button{background:none;border:0;font-size:22px;width:44px;height:44px;cursor:pointer;color:var(--ink)}
+.qty output{min-width:28px;text-align:center;color:var(--ink);font-size:17px}
+.addcart{display:flex;align-items:center;justify-content:center;gap:10px;background:#bf7f66;color:#fff;border:0;border-radius:6px;padding:17px;font:inherit;font-size:18px;cursor:pointer}
+.addcart:hover{background:#ad6f57}
+.full-ingr{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.fi-left{display:flex;flex-direction:column;gap:18px}
+.fi-left h2{font-size:clamp(40px,4.4vw,64px)}
+.inci-box{background:#ece7de;padding:24px 26px;font-size:16px;line-height:1.8;color:#4d4842;margin-bottom:6px}
+.inci-box b{color:var(--ink);font-weight:600}
+.itable{width:100%;border-collapse:collapse}
+.itable td{padding:16px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.itable td:first-child{font-weight:600;width:48%;padding-right:16px}
+.itable td:last-child{color:var(--muted)}
+.acc{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;padding:22px 0;font-weight:500;font-size:18px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";font-size:24px;font-weight:300;color:var(--muted)}
+.acc[open] summary::after{content:"–"}
+.acc p{margin:0 0 22px;color:var(--muted)}
+.pn-wrap{padding-top:0}
+@media (max-width:860px){.pd{grid-template-columns:1fr}.pd-gallery{position:relative;top:0;height:560px}}
+@media (max-width:700px){.pd{grid-template-columns:1fr}.pd-gallery,.pd-life{height:auto;min-height:0;position:relative}.pd-gallery{height:520px}.pd-life img{height:auto;aspect-ratio:4/5}.full-ingr{grid-template-columns:1fr;gap:32px}}
+.ours{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.ours .txt{display:flex;flex-direction:column;gap:18px;max-width:32rem}
+.ours h2{font-size:clamp(34px,3.8vw,52px);line-height:1.08}
+.ours p{margin:0;color:var(--muted);font-size:18px;line-height:1.7}
+.ours .sig{font-family:var(--display);font-style:italic;font-size:24px;color:var(--ink)}
+.ours .ph{aspect-ratio:640/934;background:#ebe4da;display:grid;place-items:center;overflow:hidden}
+.ours .ph img{width:100%;height:100%;object-fit:cover}
+.ours .ph{position:relative}
+.ours .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(20,18,16,.45) 100%);pointer-events:none}
+.ours .ph .ph-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.ours .ph .ph-mark{position:absolute;right:7%;bottom:6%;width:15%;height:auto;opacity:.9;object-fit:contain;z-index:1;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
+@media (max-width:860px){.ours{grid-template-columns:1fr}.ours .ph{order:-1}}
+.values{list-style:none;padding:56px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-bottom:1px solid var(--line);max-width:1240px;margin:0 auto}
+.values li{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.values li svg{width:42px;height:42px;flex:none}
+.values span{font-size:16.5px;font-weight:500;letter-spacing:.17em;text-wrap:balance;text-transform:uppercase}
+@media (min-width:761px) and (max-width:1180px){.values span{font-size:14.5px;letter-spacing:.13em}}
+@media (max-width:760px){.values{grid-template-columns:1fr 1fr;row-gap:30px}}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.c-left{display:flex;flex-direction:column;gap:20px;max-width:30rem}
+.c-left h2{font-size:clamp(44px,5.5vw,80px);line-height:1}
+.c-left p{margin:0;color:#4d4842;font-size:19px;line-height:1.7}
+.c-row{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--muted)}
+.c-row a{color:var(--ink);text-decoration:none}
+.c-form{background:#ece7de;border-radius:14px;padding:clamp(24px,3.5vw,48px);display:flex;flex-direction:column;gap:8px}
+.c-form label{font-weight:500;font-size:16px;margin-top:12px}
+.c-form input,.c-form select,.c-form textarea{font:inherit;font-size:17px;background:#fbf9f6;border:1px solid #e2dbd0;border-radius:8px;padding:13px 14px;color:var(--ink);width:100%}
+.c-form textarea{resize:vertical}
+.c-form .send{align-self:flex-start;margin-top:18px;padding:14px 26px}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+.drawer-back{position:fixed;inset:0;background:rgba(30,25,20,.35);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--paper);z-index:41;padding:28px;overflow-y:auto;display:flex;flex-direction:column;gap:16px;box-shadow:-10px 0 40px rgba(0,0,0,.12)}
+.dr-head{display:flex;justify-content:space-between;align-items:center}
+.dr-head h2{font-size:32px}
+.x{background:none;border:0;font-size:34px;line-height:1;cursor:pointer;color:var(--ink)}
+.dr-step{display:flex;flex-direction:column;gap:14px}
+.dr-items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.dr-items li{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.dr-items img{width:64px;height:64px;object-fit:cover;background:var(--tile)}
+.dr-items b{font-family:var(--display);font-weight:400;font-size:20px;display:block}
+.dr-items small{color:var(--muted);font-size:14px}
+.dr-items .rm{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit;font-size:13px;padding:0;margin-top:2px}
+.dr-items.small li{grid-template-columns:1fr auto}
+.dr-total{display:flex;justify-content:space-between;font-size:19px;padding-top:6px}
+.dr-total b{font-family:var(--display);font-weight:400;font-size:24px}
+.c-form.plain{background:none;padding:0;border-radius:0}
+.ff{margin:0;background:#ece7de;padding:14px 16px;font-size:15px;line-height:1.55;color:#4d4842;border-left:3px solid #bf7f66}
+.pay-box{margin-top:14px;background:#ece7de;padding:14px 16px;display:flex;flex-direction:column;gap:4px;font-size:15px;color:#4d4842}
+.pay-box b{color:var(--ink);font-weight:600}
+.pay-box.xm2{background:#f3e6df;border-left:3px solid #bf7f66}
+.linkbtn{background:none;border:0;text-decoration:underline;color:var(--muted);cursor:pointer;font:inherit;align-self:center}
+#step-done h3{font-size:30px}
+.giftbox{display:flex;gap:14px;align-items:center;background:#f3e6df;border:1px solid #e7cfc3;color:#8a5a46;padding:16px 18px}
+.giftbox b{display:block;color:#6f4434;font-weight:600;font-size:17px}
+.giftbox span{font-size:15px}
+.pd-info .was{color:var(--muted);text-decoration:line-through;font-size:20px}
+.made a{text-decoration:none}
+.card .gifttag{margin:12px 6px 0;color:#8a5a46;font-size:15px;font-weight:500;display:flex;gap:6px;align-items:center}
+.card .was{color:var(--muted);text-decoration:line-through;font-size:16px}
+.card.pack button.bag{cursor:pointer;color:var(--ink)}
+.card.pack button.bag:hover{background:var(--ink);color:var(--paper)}
+.boxes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:1000px){.boxes{grid-template-columns:1fr}}
+.box{background:var(--card);padding:16px;display:flex;flex-direction:column;gap:12px}
+.box img{width:100%;aspect-ratio:16/11;object-fit:cover;background:var(--tile)}
+.box h3{font-size:30px;margin:8px 6px 0}
+.box .fr2{margin:0 6px;font-family:var(--display);color:var(--muted);font-size:18px}
+.box .desc{margin:0 6px;color:var(--muted)}
+.box ul{list-style:none;margin:0 6px;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.box li{border:1px solid var(--line);background:#fbf9f6;padding:4px 10px;font-size:14px}
+.box .gift{margin:0 6px;font-size:15px;color:#8a5a46;display:flex;gap:8px;align-items:center}
+.box .foot{margin:auto 6px 0;padding-top:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.box .was{color:var(--muted);text-decoration:line-through;font-size:16px;margin-left:8px}
+.box .addcart{padding:12px 18px;font-size:16px}
+.box .note{margin:0 6px}
+/* ---- tablet & phone refinements ---- */
+@media (max-width:860px){
+  .ours .ph{max-width:460px;width:100%;margin:0 auto}
+  .ours .txt{margin:0 auto;max-width:36rem}
+  .story-bg .ph{min-height:360px}
+  .pd-gallery{height:min(70vh,600px)}
+  .pd-info{padding:32px 24px 36px}
+  .full-ingr{gap:28px}
+  section.block{padding:56px 20px}
+  #shop-section{padding-top:28px}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .card{padding:8px}
+  .card h3{font-size:21px;margin:12px 4px 6px}
+  .card .notes{font-size:13px;margin:0 4px;line-height:1.45}
+  .card .wt{font-size:13px;margin:10px 4px 0}
+  .card .gifttag{font-size:12.5px;margin:8px 4px 0}
+  .card .foot{margin:auto 4px 0;padding-top:12px}
+  .card .price{font-size:19px}
+  .card .was{font-size:13px}
+  .badge{top:8px;left:8px;padding:5px 8px;font-size:9.5px;letter-spacing:.16em}
+  .bag{width:36px;height:36px}
+  .section-head{margin-bottom:28px}
+  .hero .media{height:360px}
+  .hero h1{font-size:34px}
+  .values{padding:36px 16px}
+  .values li svg{width:34px;height:34px}
+  .values span{font-size:13px;letter-spacing:.12em}
+  .ours h2,.c-left h2{font-size:34px}
+  .ours p,.c-left p{font-size:16px}
+  .ours .ph{max-width:340px}
+  .pd-info h1{font-size:38px}
+  .pd-price .price{font-size:28px}
+  .made h3{font-size:21px}
+  .fi-left h2{font-size:34px}
+  .itable td{font-size:14px;padding:12px 0}
+  .drawer{padding:20px}
+  .tk-item{font-size:15px;padding:0 24px}
+  .tk-item b{font-size:12.5px}
+  header.site{position:relative}
+  section.block,#story-section,#handmade-section{scroll-margin-top:0}
+  .top{padding:10px 16px 2px;gap:10px}
+  .search input{padding:6px 0}
+  nav.main a{padding:6px 0 10px}
+}
+.fab-cart{display:none;position:fixed;right:16px;bottom:16px;z-index:30;width:56px;height:56px;border-radius:50%;background:var(--ink);color:var(--paper);border:0;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.2);cursor:pointer}
+@media (max-width:560px){.fab-cart{display:grid}}
+.fab-cart .count{position:absolute;top:-4px;right:-4px;min-width:24px;height:24px;border-radius:12px;background:#bf7f66;color:#fff;font-size:13px;font-weight:600;display:grid;place-items:center;padding:0 6px}
+footer{border-top:1px solid var(--line);padding:48px 24px 56px;display:flex;flex-direction:column;align-items:center;gap:14px;color:var(--muted);font-size:14px;text-align:center}
+footer img{height:70px;width:auto;opacity:.9}
+.hidden{display:none !important}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="ticker" role="region" aria-label="Christmas pre-orders"><div class="tk-track" id="tk-track"></div></div>
+  <div class="top">
+    <a class="hdr-contact" href="#contact" data-route="contact"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></svg><span>info@liajer.com</span></a>
+    <form class="search" role="search" id="search-form" hidden>
+      <label for="q" class="sr" data-i="searchLabel">Search soaps</label>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+      <input id="q" type="search" autocomplete="off" placeholder="Search" data-iph="searchPh" role="combobox" aria-expanded="false" aria-controls="q-results">
+      <div class="q-results hidden" id="q-results" role="listbox"></div>
+      <p class="q-hint" id="q-hint" data-i="qHint">By ingredient: lavender, clay, oats…</p>
+    </form>
+    <a class="brand" href="#shop" data-route="home" aria-label="Liajer"><img class="full" src="liajer_logo.svg" alt="Liajer"></a>
+    <div class="tools">
+      <div class="lang" aria-label="Language"><a id="lang-fr" href="#fr" lang="fr">FR</a><span aria-hidden="true">/</span><a id="lang-en" href="#home" lang="en">EN</a></div>
+      <button type="button" class="cart" id="cart" aria-label="Cart, 0 items" aria-haspopup="dialog">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 7h14l-1 13H6L5 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/><path d="M9 11a3 3 0 0 0 6 0"/></svg>
+        <span class="count">0</span>
+      </button>
+    </div>
+  </div>
+  <nav class="main" aria-label="Main">
+    <a href="#home" data-nav="home" data-route="home" data-i="navHome">Home</a>
+    <a href="#shop" data-nav="shop" data-route="shop" data-i="navShop">Shop</a>
+    <a href="#story" data-nav="story" data-route="story" data-i="navStory">Our story</a>
+    <a href="#faq" data-nav="faq" data-route="faq" data-i="navFaq">FAQ</a>
+    <a href="#contact" data-nav="contact" data-route="contact" data-i="navContact">Contact</a>
+  </nav>
+</header>
+
+<main id="home">
+  <div class="hero">
+    <div class="copy">
+      <span class="eyebrow" data-i="heroEyebrow">Handmade in Québec</span>
+      <h1 data-i="heroTitle">Simple soap, with ingredients you can name.</h1>
+      <span class="rule" aria-hidden="true"></span>
+      <p data-i="heroSub">Made by hand in small batches, to order.</p>
+      <a class="textlink" href="#shop" data-i="heroCta" data-route="shop">Shop the soaps</a>
+    </div>
+    <div class="media"><img src="hero_detail.jpg" alt="A handmade pink soap bar topped with dried rose petals, on a wooden table"></div>
+  </div>
+  <ul class="values" aria-label="What makes Liajer">
+    <li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19c3-4 6-7 10-10"/></svg><span data-i="v1">Whole ingredients</span></li>
+    <li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 4.5 6 7.6 6 11a6 6 0 0 1-12 0c0-3.4 3-6.5 6-11z"/></svg><span data-i="v2">Pure essential oils</span></li>
+    <li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V6a1.5 1.5 0 0 1 3 0v5"/><path d="M11 11V4.5a1.5 1.5 0 0 1 3 0V11"/><path d="M14 11V6a1.5 1.5 0 0 1 3 0v7c0 4-2.5 7-6 7s-5-1.5-6.5-4L3 12.5a1.5 1.5 0 0 1 2.5-1.6L8 14"/></svg><span data-i="v3">Handmade</span></li>
+    <li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5L12 3z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg><span data-i="v4">Small batches to order</span></li>
+  </ul>
+
+  <section class="block" id="shop-section">
+    <div class="section-head">
+      <span class="eyebrow" data-i="gridEyebrow">The collection</span>
+      <h2 data-i="gridTitle">Our natural handmade soaps</h2>
+      <div class="base">
+        <span class="base-t" data-i="baseTitle">Every bar is made with</span>
+        <ul class="base-chips" id="base-l1"></ul>
+        <ul class="base-chips s" id="base-l2"></ul>
+        <p class="base-n" data-i="baseNote"></p>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="block" id="handmade-section">
+   <div class="story-bg">
+    <div class="ph" role="img" aria-label="Handmade soap bars stacked beside a bundle of dried lavender"></div>
+    <div class="story">
+      <div class="txt">
+        <span class="eyebrow" data-i="storyEyebrow">Handmade</span>
+        <h2 data-i="storyTitle">Small batches, made in Québec.</h2>
+        <p data-i="storyP1">Every bar is mixed, poured and cut by hand in small batches, then left to cure for 4 to 6 weeks until it is gentle and long-lasting.</p>
+        <p data-i="storyP2">The colours come from plants and clays: turmeric, madder root, indigo, spirulina and French clays. Every ingredient is chosen with care, for your skin and for the senses.</p>
+      </div>
+    </div>
+   </div>
+  </section>
+  <section class="block" id="story-section">
+   <div class="ours">
+    <div class="txt">
+      <span class="eyebrow" data-i="osEyebrow">Our story</span>
+      <h2 data-i="osTitle">Made for my children, shared with you.</h2>
+      <p data-i="osP1"></p>
+      <p data-i="osP2"></p>
+      <p data-i="osP3"></p>
+      <p class="sig">— Filomena</p>
+    </div>
+    <div class="ph" id="os-photo"><img src="story_family.jpg" alt="" class="ph-photo" id="os-img"><img src="liajer_monogram_white.svg" alt="" class="ph-mark"></div>
+   </div>
+  </section>
+  <section class="block" id="faq-section">
+    <div class="section-head"><h2 data-i="faqTitle">Questions</h2></div>
+    <div class="faq" id="faq-list"></div>
+  </section>
+  <section class="block" id="contact-section">
+    <div class="contact">
+      <div class="c-left">
+        <span class="eyebrow" data-i="cEyebrow">Contact</span>
+        <h2 data-i="cTitle">Get in touch</h2>
+        <p data-i="cIntro">A question about an ingredient, an allergy or an order? Write to us before you order.</p>
+        <p data-i="cFeedback"></p>
+        <div class="c-row"><span data-i="cEmailL">Email</span><a href="mailto:info@liajer.com">info@liajer.com</a></div>
+      </div>
+      <form class="c-form" id="c-form" novalidate>
+        <label for="c-name" data-i="fName">Name</label><input id="c-name" name="name" autocomplete="name" required>
+        <label for="c-email" data-i="fEmail">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required>
+        <label for="c-topic" data-i="fTopic">Topic</label>
+        <select id="c-topic" name="topic"><option data-i="t1">Ingredients or allergies</option><option data-i="t2">An order</option><option data-i="t4">Feedback</option><option data-i="t3">Something else</option></select>
+        <label for="c-msg" data-i="fMsg">Message</label><textarea id="c-msg" name="message" rows="6" required></textarea>
+        <button class="addcart send" type="submit" data-i="fSend">Send</button>
+        <p class="note" id="c-note" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<main id="product" class="hidden">
+  <div class="pd">
+    <div class="pd-gallery">
+      <div class="main"><img id="p-img" src="" alt=""></div>
+      <div class="thumbs">
+        <button type="button" id="t-tile" aria-pressed="true" aria-label="Show product on beige"><img id="t-tile-img" src="" alt=""></button>
+        <button type="button" id="t-photo" aria-pressed="false" aria-label="Show product on white"><img id="t-photo-img" src="" alt=""></button>
+      </div>
+    </div>
+    <div class="pd-info">
+      <div class="crumbs"><a href="#shop" data-i="navShop" data-route="shop">Shop</a> <span aria-hidden="true">/</span> <span data-i="bodySoap">Body soap</span></div>
+      <span class="tag" data-i="badge">PRE-ORDER</span>
+      <h1 id="p-name"></h1>
+      <div class="fr hidden" id="p-fr"></div>
+      <p class="pd-notes" id="p-no"></p>
+      <div class="pd-price"><span class="price" data-i="price">$10 CAD</span><span class="muted" data-i="madeToOrder">Made to order</span></div>
+      <div class="made">
+        <span class="label" data-i="madeWith">Made with</span>
+        <div id="p-made"></div>
+        <p id="p-desc"></p>
+      </div>
+      <fieldset class="opt hidden" id="opt">
+        <legend id="opt-legend">Topping</legend>
+        <div class="opt-row">
+          <label><input type="radio" name="topping" id="opt-without" value="without" checked> <span id="opt-without-l"></span></label>
+          <label><input type="radio" name="topping" id="opt-with" value="with"> <span id="opt-with-l"></span></label>
+        </div>
+        <p class="opt-note" id="opt-note"></p>
+      </fieldset>
+      <div class="row"><span data-i="size">Size</span><span class="size">100 g</span></div>
+      <div class="row"><span id="qty-l" data-i="qty">Qty</span>
+        <div class="qty" role="group" aria-labelledby="qty-l"><button type="button" id="q-minus" aria-label="−1">−</button><output id="q-val">1</output><button type="button" id="q-plus" aria-label="+1">+</button></div></div>
+      <button class="addcart" type="button" id="preorder"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 7h14l-1 13H6L5 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/><path d="M9 11a3 3 0 0 0 6 0"/></svg><span data-i="addCart">Add to cart</span></button>
+      <p class="note" id="pre-note" role="status"></p>
+      <div class="dnote"><p><b data-i="hnKicker">Friends &amp; Family Christmas pre‑orders</b><span data-i="hnText"></span></p><p><b data-i="ldKicker">Last day to order</b><span data-i="ldText"></span></p></div>
+    </div>
+  </div>
+  <section class="block full-ingr">
+    <div class="fi-left">
+      <span class="label" data-i="fullList">Full ingredient list</span>
+      <h2 id="fi-name"></h2>
+      <div class="inci-box" id="fi-inci"></div>
+      <button class="btn ghost" type="button" id="copy" data-i="copyBtn" hidden>Copy product text</button> <span class="note" id="copy-note" role="status" hidden></span>
+    </div>
+    <div class="fi-right">
+      <table class="itable"><tbody id="fi-table"></tbody></table>
+      <details class="acc"><summary data-i="howTo">How to use</summary><p data-i="howToText"></p></details>
+      <details class="acc"><summary data-i="allergens">Allergens</summary><p id="allergen-text"></p></details>
+    </div>
+  </section>
+  <section class="block pn-wrap">
+    <div class="pn">
+      <a id="prev" href="#"><span data-i="prev">Previous</span><b></b></a>
+      <a id="next" href="#"><span data-i="next">Next</span><b></b></a>
+    </div>
+  </section>
+</main>
+<main id="packpage" class="hidden">
+  <div class="pd">
+    <div class="pd-gallery"><div class="main"><img id="pk-img" src="tile_Pack_10b.jpg" alt="" style="object-fit:cover"></div></div>
+    <div class="pd-info">
+      <div class="crumbs"><a href="#shop" data-i="navShop" data-route="shop">Shop</a> <span aria-hidden="true">/</span> <span data-i="bxCrumb">Gift pack</span></div>
+      <span class="tag" data-i="badge">PRE-ORDER</span>
+      <h1 id="pk-name"></h1>
+      <div class="fr hidden" id="pk-fr"></div>
+      <p class="pd-notes" id="pk-no"></p>
+      <div class="pd-price"><span><span class="price" id="pk-price"></span> <span class="was" id="pk-was"></span></span><span class="muted" data-i="madeToOrder">Made to order</span></div>
+      <div class="giftbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="8" width="18" height="4"/><path d="M12 8v13M5 12v9h14v-9"/><path d="M12 8c-2-4-6-4-6-1.5S9 8 12 8zm0 0c2-4 6-4 6-1.5S15 8 12 8z"/></svg><div><b data-i="giftTitle">Free gift included</b><span data-i="giftText">Every six pack comes with a soap dish, our gift to you.</span></div></div>
+      <div class="made"><span class="label" data-i="inPack">In this pack</span><div id="pk-list"></div><p class="muted small" data-i="noTopNote">Pack bars come without toppings.</p></div>
+      <div class="row"><span id="pqty-l" data-i="qty">Qty</span>
+        <div class="qty" role="group" aria-labelledby="pqty-l"><button type="button" id="pq-minus" aria-label="−1">−</button><output id="pq-val">1</output><button type="button" id="pq-plus" aria-label="+1">+</button></div></div>
+      <button class="addcart" type="button" id="pk-add"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 7h14l-1 13H6L5 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/><path d="M9 11a3 3 0 0 0 6 0"/></svg><span data-i="addCart">Add to cart</span></button>
+      <div class="dnote"><p><b data-i="hnKicker">Friends &amp; Family Christmas pre‑orders</b><span data-i="hnText"></span></p><p><b data-i="ldKicker">Last day to order</b><span data-i="ldText"></span></p></div>
+    </div>
+  </div>
+</main>
+
+<button type="button" class="fab-cart" id="fab-cart" aria-label="Cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 7h14l-1 13H6L5 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/><path d="M9 11a3 3 0 0 0 6 0"/></svg><span class="count" id="fab-count">0</span></button>
+<div class="drawer-back hidden" id="drawer-back"></div>
+<aside class="drawer hidden" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dr-title">
+  <div class="dr-head"><h2 id="dr-title" data-i="drTitle">Your pre-order</h2><button type="button" class="x" id="dr-close" aria-label="Close">×</button></div>
+  <div class="dr-step" id="step-cart">
+    <p class="ff" data-i="ffNote">Pre-orders are open to family and friends only for now. Thank you for being part of Liajer’s very first batches! GST and QST are not charged until further notice.</p>
+    <ul class="dr-items" id="dr-items"></ul>
+    <p class="dr-empty" id="dr-empty" data-i="cartEmpty">Your cart is empty.</p>
+    <div class="dr-total"><span data-i="subtotal">Subtotal</span><b id="dr-sub"></b></div>
+    <div class="pay-box xm2"><b data-i="ckTitle">Christmas delivery: December 15 to 22</b><span data-i="ckText">Last day to order: November 10. Your soap is made to order and cures for 4 to 6 weeks before delivery.</span></div>
+    <p class="small muted" data-i="taxNote">Delivered in person. No shipping fee. Paid in advance by Interac e-Transfer.</p>
+    <button class="addcart" type="button" id="to-details" data-i="continueBtn">Continue</button>
+  </div>
+  <form class="dr-step hidden c-form plain" id="step-details" novalidate>
+    <label for="o-name" data-i="fName">Name</label><input id="o-name" autocomplete="name" required>
+    <label for="o-email" data-i="fEmail">Email</label><input id="o-email" type="email" autocomplete="email" required>
+    <label for="o-phone" data-i="fPhone">Phone</label><input id="o-phone" type="tel" autocomplete="tel">
+    <label for="o-area" data-i="fArea">Delivery area</label>
+    <select id="o-area"><option>Montréal</option><option>Laval</option><option data-i="a3">West Island (Montérégie Ouest)</option></select>
+    <label for="o-addr" data-i="fAddr">Delivery address</label><textarea id="o-addr" rows="2" autocomplete="street-address" required></textarea>
+    <div class="pay-box xm2"><b data-i="ckTitle">Christmas delivery: December 15 to 22</b><span data-i="ckText">Last day to order: November 10. Your soap is made to order and cures for 4 to 6 weeks before delivery.</span></div>
+    <div class="pay-box"><b data-i="payTitle">Payment in advance by Interac e-Transfer</b><span data-i="payText">Send your e-Transfer to info@liajer.com. Your order is confirmed once payment is received.</span></div>
+    <label for="o-notes" data-i="fNotes">Notes (optional)</label><textarea id="o-notes" rows="3"></textarea>
+    <div class="dr-total"><span data-i="total">Total</span><b id="dr-total2"></b></div>
+    <button class="addcart" type="submit" data-i="placeBtn">Place pre-order</button>
+    <button class="linkbtn" type="button" id="back-cart" data-i="backBtn">Back to cart</button>
+    <p class="note" id="o-note" role="status"></p>
+  </form>
+  <div class="dr-step hidden" id="step-done">
+    <p class="eyebrow" data-i="doneEyebrow">Thank you</p>
+    <h3 id="done-title"></h3>
+    <p id="done-text"></p>
+    <ul class="dr-items small" id="done-items"></ul>
+    <p class="small muted" data-i="demoNote">Preview only: no order has been sent and no payment taken.</p>
+    <button class="addcart" type="button" id="done-close" data-i="keepShopping">Keep shopping</button>
+  </div>
+</aside>
+<footer>
+  <img src="liajer_logo.svg" alt="Liajer">
+  <div data-i="madeQc">Made in Québec, Canada</div>
+  <div>www.liajer.com</div>
+</footer>
+
+<script>
+const BASE="Olea Europaea (Olive) Fruit Oil, Aqua, Cocos Nucifera (Coconut) Oil, Mangifera Indica (Mango) Seed Butter, Butyrospermum Parkii (Shea) Butter, Sodium Hydroxide, Ricinus Communis (Castor) Seed Oil";
+const SOAPS=[
+ {slug:"nude",file:"Nude",no:"00",en:"Nude",fr:"Nu",
+  notes:["Shea butter","Mango seed butter"],chips:["Unscented","Shea butter","Mango seed butter","Olive oil"],
+  desc:"Our simplest bar: olive, coconut, mango and shea, and nothing more. No scent and no added colour, for anyone who likes their soap plain and gentle.",
+  descFr:"Notre savon le plus simple : olive, coco, mangue et karité, rien de plus. Sans parfum ni colorant ajouté, pour celles et ceux qui aiment la simplicité.",
+  extra:""},
+ {slug:"morning-grace",file:"Morning_Grace",no:"01",en:"Morning Grace",fr:"Grâce du Matin",
+  notes:["Lavender essential oil","Bergamot essential oil"],chips:["Lavender","Bergamot","Lavender flowers"],
+  desc:"A soft start to the day. Lavender brightened with bergamot.",
+  descFr:"Un doux début de journée. La lavande, éclairée par la bergamote.",
+  extra:", Lavandula Angustifolia (Lavender) Oil, Citrus Aurantium Bergamia (Bergamot) Peel Oil, Lavandula Angustifolia (Lavender) Flower"},
+ {slug:"botanical-calm",file:"Botanical_Calm",no:"02",en:"Botanical Calm",fr:"Calme Botanique",
+  notes:["Oat flour","Lavender essential oil"],chips:["Lavender","Geranium","Cedarwood","Oat flour"],
+  desc:"A quiet, grounding blend of lavender, geranium and cedarwood, with fine oat flour for a creamy bar.",
+  descFr:"Un mélange calme et boisé de lavande, de géranium et de cèdre, avec une fine farine d’avoine pour une texture crémeuse.",
+  extra:", Lavandula Angustifolia (Lavender) Oil, Avena Sativa (Oat) Kernel Flour, Pelargonium Graveolens Flower Oil, Cedrus Deodara Wood Oil"},
+ {slug:"citrus-burst",file:"Citrus_Burst",no:"03",en:"Citrus Burst",fr:"Éclat d’Agrumes",
+  notes:["Sweet orange essential oil","Turmeric powder"],chips:["Sweet orange","Litsea cubeba","Turmeric","Moroccan lava clay"],
+  desc:"Bright and sunny. Sweet orange and litsea cubeba, coloured naturally with turmeric and Moroccan lava clay.",
+  descFr:"Lumineux et ensoleillé. Orange douce et litsea cubeba, coloré naturellement au curcuma et à l’argile de lave du Maroc.",
+  extra:", Citrus Aurantium Dulcis (Orange) Peel Oil, Litsea Cubeba Fruit Oil, Curcuma Longa (Turmeric) Root Powder, Moroccan Lava Clay"},
+ {slug:"spa-fresh",file:"Spa_Fresh",no:"04",en:"Spa Fresh",fr:"Fraîcheur Spa",
+  notes:["Peppermint","Eucalyptus","French green clay"],chips:["Peppermint","Eucalyptus","Rosemary","French green clay","Spirulina"],
+  desc:"Cool and clean, like a morning at the spa. Peppermint, eucalyptus and rosemary, with French green clay and spirulina.",
+  descFr:"Frais comme un matin au spa. Menthe poivrée, eucalyptus et romarin, avec argile verte française et spiruline.",
+  extra:", Illite (French Green Clay), Mentha Piperita (Peppermint) Oil, Eucalyptus Globulus Leaf Oil, Rosmarinus Officinalis (Rosemary) Leaf Oil, Spirulina Platensis Powder"},
+ {slug:"forest-veil",file:"Forest_Veil",no:"05",en:"Forest Veil",fr:"Souffle des Bois",
+  notes:["Siberian fir essential oil","Lemon essential oil"],chips:["Siberian fir","Lemon peel"],
+  desc:"A walk in the woods. Crisp Siberian fir needle with a lift of lemon peel.",
+  descFr:"Une promenade en forêt. Le sapin de Sibérie, vivifiant, relevé d’un zeste de citron.",
+  extra:", Abies Sibirica Needle Oil, Citrus Limon (Lemon) Peel Oil"},
+ {slug:"solace-cove",file:"Solace_Cove",no:"06",en:"Solace Cove",fr:"Douceur Marine",
+  notes:["Bergamot","Cypress","Indigo"],chips:["Bergamot","Litsea cubeba","Cypress","Indigo","Kaolin clay"],
+  desc:"Calm as a quiet shoreline. Bergamot, litsea and cypress, softly coloured with indigo and kaolin clay.",
+  descFr:"Calme comme une crique paisible. Bergamote, litsea et cyprès, teinté en douceur d’indigo et d’argile kaolin.",
+  extra:", Citrus Aurantium Bergamia (Bergamot) Peel Oil, Kaolin, Litsea Cubeba Fruit Oil, Cupressus Sempervirens Leaf Oil, Indigofera Tinctoria Leaf Powder"},
+ {slug:"afterglow",file:"Afterglow",no:"07",en:"Afterglow",fr:"Élan",
+  notes:["Lavender","Patchouli","Madder root"],chips:["Lavender","Patchouli","Sweet orange","Madder root","Kaolin clay"],
+  desc:"Warm and glowing. Lavender and sweet orange over a soft base of patchouli, tinted with madder root.",
+  descFr:"Chaleureux et lumineux. Lavande et orange douce sur un fond de patchouli, teinté à la racine de garance.",
+  extra:", Kaolin, Lavandula Angustifolia (Lavender) Oil, Pogostemon Cablin Leaf Oil, Citrus Aurantium Dulcis (Orange) Peel Oil, Rubia Tinctorum Root Powder"},
+ {slug:"first-blush",file:"First_Blush",no:"08",en:"First Blush",fr:"Premier Émoi",
+  notes:["Geranium","Palmarosa","French pink clay"],chips:["Geranium","Palmarosa","Bergamot","Oat flour","French pink clay"],
+  desc:"Soft and romantic. Geranium and palmarosa with a touch of bergamot, made with oat flour and French pink clay.",
+  descFr:"Doux et romantique. Géranium et palmarosa avec une touche de bergamote, à la farine d’avoine et à l’argile rose française.",
+  extra:", Pelargonium Graveolens Flower Oil, Cymbopogon Martini Oil, Avena Sativa (Oat) Kernel Flour, Illite (French Pink Clay), Citrus Aurantium Bergamia (Bergamot) Peel Oil, Rubia Tinctorum Root Powder"},
+ {slug:"limonelle",file:"Limonelle",no:"09",en:"Limonelle",fr:"Limonelle",
+  notes:["Lemon","Grapefruit","Turmeric"],chips:["Lemon","Grapefruit","Litsea cubeba","Turmeric","Kaolin clay"],
+  desc:"Zesty and fresh. Lemon, grapefruit and litsea cubeba, tinted a soft yellow with turmeric.",
+  descFr:"Vif et frais. Citron, pamplemousse et litsea cubeba, teinté d’un jaune doux au curcuma.",
+  extra:", Citrus Limon (Lemon) Peel Oil, Kaolin, Litsea Cubeba Fruit Oil, Citrus Paradisi (Grapefruit) Peel Oil, Curcuma Longa (Turmeric) Root Powder"}
+];
+const FR={
+ "nude":{notes:["Beurre de karité","Beurre de mangue"],chips:["Sans parfum","Beurre de karité","Beurre de mangue","Huile d’olive"]},
+ "morning-grace":{notes:["Huile essentielle de lavande","Huile essentielle de bergamote"],chips:["Lavande","Bergamote","Fleurs de lavande"]},
+ "botanical-calm":{notes:["Farine d’avoine","Huile essentielle de lavande"],chips:["Lavande","Géranium","Cèdre","Farine d’avoine"]},
+ "citrus-burst":{notes:["Huile essentielle d’orange douce","Curcuma en poudre"],chips:["Orange douce","Litsea cubeba","Curcuma","Argile de lave du Maroc"]},
+ "spa-fresh":{notes:["Menthe poivrée","Eucalyptus","Argile verte française"],chips:["Menthe poivrée","Eucalyptus","Romarin","Argile verte française","Spiruline"]},
+ "forest-veil":{notes:["Huile essentielle de sapin de Sibérie","Huile essentielle de citron"],chips:["Sapin de Sibérie","Zeste de citron"]},
+ "solace-cove":{notes:["Bergamote","Cyprès","Indigo"],chips:["Bergamote","Litsea cubeba","Cyprès","Indigo","Argile kaolin"]},
+ "afterglow":{notes:["Lavande","Patchouli","Racine de garance"],chips:["Lavande","Patchouli","Orange douce","Racine de garance","Argile kaolin"]},
+ "first-blush":{notes:["Géranium","Palmarosa","Argile rose française"],chips:["Géranium","Palmarosa","Bergamote","Farine d’avoine","Argile rose française"]},
+ "limonelle":{notes:["Citron","Pamplemousse","Curcuma"],chips:["Citron","Pamplemousse","Litsea cubeba","Curcuma","Argile kaolin"]}
+};
+const T={
+ en:{navHome:"Home",navShop:"Shop",navStory:"Our story",navFaq:"FAQ",navContact:"Contact",qHint:"By ingredient: lavender, clay, oats…",madeQc:"Made in Québec, Canada",bxEyebrow:"Gift boxes",bxTitle:"Six bars, one gift",bxSub:"Each box holds six bars (without toppings) and comes with a free soap dish.",bxGift:"Includes a free soap dish",bxCartSub:"6 bars · no toppings · free soap dish",bxCrumb:"Gift pack",giftTitle:"Free gift included",giftText:"Every six pack comes with a soap dish, our gift to you.",giftShort:"a soap dish",packWt:"6 bars × 100 g",inPack:"In this pack",noTopNote:"Pack bars come without toppings.",v1:"Whole ingredients",v2:"Pure essential oils",v3:"Handmade",v4:"Small batches to order",
+  cEyebrow:"Contact",cTitle:"Get in touch",cIntro:"A question about an ingredient, an allergy or an order? Write to us before you order.",cFeedback:"And once you’ve tried your soap, we would truly love to hear from you. Every bar is made with care, and your feedback, big or small, helps us make each batch even better.",t4:"Feedback",cEmailL:"Email",fName:"Name",fEmail:"Email",fTopic:"Topic",fMsg:"Message",fSend:"Send",t1:"Ingredients or allergies",t2:"An order",t3:"Something else",
+  cThanks:"Thank you! Your email app should open with your message ready to send.",cMissing:"Please fill in your name, email and message.",
+  drTitle:"Your pre-order",subtotal:"Subtotal",total:"Total",taxNote:"Delivered in person. No shipping fee. Paid in advance by Interac e-Transfer.",ffNote:"Pre-orders are open to family and friends only for now. Thank you for being part of Liajer’s very first batches! GST and QST are not charged until further notice.",fAddr:"Delivery address",payTitle:"Payment in advance by Interac e-Transfer",payText:"Send your e-Transfer to info@liajer.com. Your order is confirmed once payment is received.",continueBtn:"Continue",fPhone:"Phone",fArea:"Delivery area",a1:"Montréal (downtown)",a3:"West Island (Montérégie Ouest)",fPay:"How would you like to pay?",p1:"Interac e-Transfer",p2:"Card (secure payment link)",p3:"Cash on delivery",fNotes:"Notes (optional)",placeBtn:"Place pre-order",backBtn:"Back to cart",doneEyebrow:"Thank you",keepShopping:"Keep shopping",demoNote:"Preview only: no order has been sent and no payment taken.",oMissing:"Please add your name, email and delivery address.",
+  doneTitle:n=>`Pre-order ${n} received`,doneText:(p,e,t,no)=>`Please send an Interac e-Transfer of ${t} to info@liajer.com, and include your order number ${no} in the message. Your pre-order is confirmed once payment is received. Your soap is then made, cured (4 to 6 weeks) and delivered to your door between December 15 and December 22, in time for Christmas.`,remove:"Remove",
+  osEyebrow:"Our story",osTitle:"Made for my children, shared with you.",osP1:"I have two sons who live with ichthyosis, a skin condition that leaves their skin dry and easily irritated. For years I dreamed of making something gentle for them: a soap I could trust on their skin every single day. And so I did.",osP2:"Liajer, named after my two sons, Liam (on the left) and Jeremy (on the right), is a promise to them, finally kept. Every bar is made by hand in small batches with nourishing oils and butters, and crafted to cleanse without leaving skin feeling tight or dry.",osP3:"What began in my kitchen for my family is now made for yours.",faqTitle:"Questions",faq:[["Why pre-order?","Each batch is made to demand. You get a fresh bar and nothing goes to waste."],["How long until my order arrives?","Each batch cures for 4 to 6 weeks after it is made. Filomena will contact you to plan delivery."],["Where do you deliver?","In person in Montréal (downtown), Laval and the West Island (Montérégie Ouest). Shipping will come later."],["Do your soaps contain essential oils or fragrance?","Our bars are scented only with essential oils, no synthetic fragrance. Nu has none at all. The full list is on every product page."],["How do I make my bar last?","Keep it on a draining soap dish, away from the shower stream."]],searchLabel:"Search soaps",searchPh:"Search",
+  ffhK:"Friends & Family Launch",ffhT:"Pre-orders are open to family and friends only for now.",heroEyebrow:"Handmade in Québec",heroTitle:"Simple soap, with ingredients you can name.",heroSub:"Made by hand in small batches, to order.",heroCta:"Shop the soaps",
+  gridTitle:"Our natural handmade soaps",gridEyebrow:"The collection",gridSub:"",
+  storyEyebrow:"Handmade",storyTitle:"Small batches, made in Québec.",
+  storyP1:"Every bar is mixed, poured and cut by hand in small batches, then left to cure for 4 to 6 weeks until it is gentle and long-lasting.",
+  storyP2:"The colours come from plants and clays: turmeric, madder root, indigo, spirulina and French clays. Every ingredient is chosen with care, for your skin and for the senses.",
+  factSoaps:"Soaps",factBar:"Per bar",factQc:"Made in Québec",
+  badge:"PRE-ORDER",price:"$10 CAD",noAdd:"Nothing added: base ingredients only",baseTitle:"Every bar is made with",baseNote:"Lye is what allows the oils and butters to saponify, the natural reaction that turns them into soap. As each bar cures, the lye is fully transformed, so none remains in the finished soap.",ingrBase:"Base",ingrAdd:"Added",optLegend:"Topping",withoutL:"Without topping",withoutNote:"A smooth, plain top with no flowers.",preorder:"Pre-order",copyBtn:"Copy product text",prev:"Previous",next:"Next",
+  cartEmpty:"Your cart is empty.",bodySoap:"Body soap",madeToOrder:"Made to order",madeWith:"Made with",size:"Size",qty:"Qty",addCart:"Add to cart",deliveryNote:"Order now to receive your soap in time for Christmas, with delivery between December 15 and 22. Last day to order: November 10.",xmTitle:"Now taking Christmas pre-orders",hnKicker:"Friends & Family Christmas pre‑orders",ldKicker:"Last day to order",ldText:"The last day to order for Christmas delivery is November 10.",hnText:"Order now and your soap will arrive in time for Christmas, delivered between December 15 and 22.",ckTitle:"Christmas delivery: December 15 to 22",ckText:"Last day to order: November 10. Your soap is made to order and cures for 4 to 6 weeks before delivery.",xmText:"Order now for delivery between December 15 and 22, just in time for Christmas. Each bar is made by hand and cures for 4 to 6 weeks, so the last day to order is November 10.",fullList:"Full ingredient list",howTo:"How to use",howToText:"Lather between wet hands or on a washcloth, apply to the body, then rinse. Let the bar dry between uses on a draining soap dish.",allergens:"Allergens",added:n=>`Added to your cart (${n}). Pre-orders open soon.`,cartItems:n=>`${n} bar${n>1?"s":""} in your cart.`,oatNote:" Contains oat.",cartNote:"Pre-orders open soon.",
+  preNote:n=>`Pre-orders open soon. Thank you for your interest in ${n}!`,
+  copied:"Copied. Paste it into your shop.",copyFail:"Copy isn’t allowed here. Select the text above and copy it instead.",
+  noResults:q=>`No soaps match “${q}”.`,results:(n,q)=>`${n} soap${n>1?"s":""} match “${q}”.`,
+  keyIngr:"Key ingredients",no:"No.",madeIn:"Fabriqué au Québec, Canada",title:"Liajer Savonnerie",cartLabel:"Cart, 0 items",
+  altTile:n=>`Liajer ${n} soap bar with its label`,altBanner:"A handmade pink soap bar topped with dried rose petals, on a wooden table"},
+ fr:{navHome:"Accueil",navShop:"Boutique",navStory:"Notre histoire",navFaq:"FAQ",navContact:"Contact",qHint:"Par ingrédient : lavande, argile…",madeQc:"Fabriqué au Québec, Canada",bxEyebrow:"Coffrets cadeaux",bxTitle:"Six savons, un cadeau",bxSub:"Chaque coffret contient six savons (sans garniture) et un porte-savon offert.",bxGift:"Porte-savon offert",bxCartSub:"6 savons · sans garniture · porte-savon offert",bxCrumb:"Coffret",giftTitle:"Cadeau inclus",giftText:"Chaque coffret de six comprend un porte-savon, offert en cadeau.",giftShort:"un porte-savon",packWt:"6 savons × 100 g",inPack:"Dans ce coffret",noTopNote:"Les savons du coffret sont sans garniture.",v1:"Ingrédients simples",v2:"Huiles essentielles pures",v3:"Fait à la main",v4:"Petits lots sur commande",
+  cEyebrow:"Contact",cTitle:"Écrivez-nous",cIntro:"Une question sur un ingrédient, une allergie ou une commande ? Écrivez-nous avant de commander.",cFeedback:"Et une fois votre savon essayé, nous aimerions sincèrement avoir de vos nouvelles. Chaque savon est fait avec soin, et vos commentaires, petits ou grands, nous aident à rendre chaque lot encore meilleur.",t4:"Commentaires",cEmailL:"Courriel",fName:"Nom",fEmail:"Courriel",fTopic:"Sujet",fMsg:"Message",fSend:"Envoyer",t1:"Ingrédients ou allergies",t2:"Une commande",t3:"Autre chose",
+  cThanks:"Merci ! Votre application de courriel devrait s’ouvrir avec votre message prêt à envoyer.",cMissing:"Veuillez indiquer votre nom, votre courriel et votre message.",
+  drTitle:"Votre précommande",subtotal:"Sous-total",total:"Total",taxNote:"Livré en personne. Aucuns frais de livraison. Payé à l’avance par virement Interac.",ffNote:"Pour l’instant, les précommandes sont réservées à la famille et aux amis. Merci de faire partie des tout premiers lots de Liajer ! La TPS et la TVQ ne sont pas facturées jusqu’à nouvel ordre.",fAddr:"Adresse de livraison",payTitle:"Paiement à l’avance par virement Interac",payText:"Envoyez votre virement Interac à info@liajer.com. Votre commande est confirmée à la réception du paiement.",continueBtn:"Continuer",fPhone:"Téléphone",fArea:"Secteur de livraison",a1:"Montréal (centre-ville)",a3:"Ouest-de-l’Île (Montérégie Ouest)",fPay:"Comment souhaitez-vous payer ?",p1:"Virement Interac",p2:"Carte (lien de paiement sécurisé)",p3:"Comptant à la livraison",fNotes:"Notes (facultatif)",placeBtn:"Envoyer la précommande",backBtn:"Retour au panier",doneEyebrow:"Merci",keepShopping:"Continuer mes achats",demoNote:"Aperçu seulement : aucune commande n’a été envoyée et aucun paiement n’a été pris.",oMissing:"Veuillez indiquer votre nom, votre courriel et votre adresse de livraison.",
+  doneTitle:n=>`Précommande ${n} reçue`,doneText:(p,e,t,no)=>`Veuillez envoyer un virement Interac de ${t} à info@liajer.com, en indiquant votre numéro de commande ${no} dans le message. Votre précommande est confirmée à la réception du paiement. Votre savon est ensuite fabriqué, mis en cure (4 à 6 semaines) et livré à votre porte entre le 15 et le 22 décembre, à temps pour Noël.`,remove:"Retirer",
+  osEyebrow:"Notre histoire",osTitle:"Créé pour mes enfants, partagé avec vous.",osP1:"J’ai deux fils qui vivent avec l’ichtyose, une affection qui rend leur peau sèche et facilement irritée. Depuis des années, je rêvais de créer quelque chose de doux pour eux : un savon auquel je pourrais me fier pour leur peau, chaque jour. Et c’est ce que j’ai fait.",osP2:"Liajer, nommé en l’honneur de mes deux fils, Liam (à gauche) et Jeremy (à droite), est une promesse que je leur ai faite, enfin tenue. Chaque savon est fait à la main en petits lots, avec des huiles et des beurres nourrissants, et conçu pour nettoyer sans laisser la peau tendue ni sèche.",osP3:"Ce qui a commencé dans ma cuisine pour ma famille est maintenant fait pour la vôtre.",faqTitle:"Questions",faq:[["Pourquoi précommander ?","Chaque lot est fait sur demande. Vous recevez un savon frais et rien ne se perd."],["Quand vais-je recevoir ma commande ?","Chaque lot mûrit de 4 à 6 semaines après sa fabrication. Filomena communiquera avec vous pour planifier la livraison."],["Où livrez-vous ?","En personne à Montréal (centre-ville), à Laval et dans l’Ouest-de-l’Île (Montérégie Ouest). L’expédition viendra plus tard."],["Vos savons contiennent-ils des huiles essentielles ou du parfum ?","Nos savons sont parfumés uniquement aux huiles essentielles, sans parfum synthétique. Nu n’en contient aucune. La liste complète figure sur chaque page produit."],["Comment faire durer mon savon ?","Gardez-le sur un porte-savon qui s’égoutte, à l’abri du jet de la douche."]],searchLabel:"Rechercher un savon",searchPh:"Rechercher",
+  ffhK:"Lancement famille et amis",ffhT:"Pour l’instant, les précommandes sont réservées à la famille et aux amis.",heroEyebrow:"Fait à la main au Québec",heroTitle:"Du savon simple, avec des ingrédients que vous pouvez nommer.",heroSub:"Fait à la main en petits lots, sur commande.",heroCta:"Découvrir les savons",
+  gridTitle:"Nos savons naturels faits à la main",gridEyebrow:"La collection",gridSub:"",
+  storyEyebrow:"Fait à la main",storyTitle:"En petits lots, au Québec.",
+  storyP1:"Chaque savon est mélangé, coulé et coupé à la main en petits lots, puis laissé en cure de 4 à 6 semaines pour devenir doux et durable.",
+  storyP2:"Les couleurs viennent des plantes et des argiles : curcuma, racine de garance, indigo, spiruline et argiles françaises. Chaque ingrédient est choisi avec soin, pour votre peau et pour le plaisir des sens.",
+  factSoaps:"Savons",factBar:"Par savon",factQc:"Fait au Québec",
+  badge:"PRÉCOMMANDE",price:"10 $ CAD",noAdd:"Aucun ajout : ingrédients de base seulement",baseTitle:"Chaque savon est fait avec",baseNote:"La soude caustique permet aux huiles et aux beurres de se saponifier, la réaction naturelle qui les transforme en savon. Pendant la cure, la soude caustique est entièrement transformée : il n’en reste aucune dans le savon fini.",ingrBase:"Base",ingrAdd:"Ajouts",optLegend:"Garniture",withoutL:"Sans garniture",withoutNote:"Un dessus lisse, sans fleurs.",preorder:"Précommander",copyBtn:"Copier le texte du produit",prev:"Précédent",next:"Suivant",
+  cartEmpty:"Votre panier est vide.",bodySoap:"Savon corporel",madeToOrder:"Fait sur commande",madeWith:"Fait avec",size:"Format",qty:"Qté",addCart:"Ajouter au panier",deliveryNote:"Commandez dès maintenant pour recevoir vos savons à temps pour Noël, avec une livraison entre le 15 et le 22 décembre. Date limite pour commander : le 10 novembre.",xmTitle:"Précommandes de Noël en cours",hnKicker:"Précommandes de Noël pour la famille et les amis",ldKicker:"Date limite",ldText:"Le 10 novembre est la date limite pour commander en vue d’une livraison à Noël.",hnText:"Commandez dès maintenant et vos savons arriveront à temps pour Noël, livrés entre le 15 et le 22 décembre.",ckTitle:"Livraison pour Noël : du 15 au 22 décembre",ckText:"Date limite pour commander : le 10 novembre. Votre savon est fait sur commande et mûrit de 4 à 6 semaines avant la livraison.",xmText:"Commandez dès maintenant pour une livraison entre le 15 et le 22 décembre, juste à temps pour Noël. Chaque savon est fait à la main et mûrit de 4 à 6 semaines : la date limite pour commander est le 10 novembre.",fullList:"Liste complète des ingrédients",howTo:"Mode d’emploi",howToText:"Faites mousser entre vos mains mouillées ou sur une débarbouillette, appliquez sur le corps, puis rincez. Laissez sécher le savon sur un porte-savon qui s’égoutte entre les utilisations.",allergens:"Allergènes",added:n=>`Ajouté au panier (${n}). Les précommandes ouvrent bientôt.`,cartItems:n=>`${n} savon${n>1?"s":""} dans votre panier.`,oatNote:" Contient de l’avoine.",cartNote:"Les précommandes ouvrent bientôt.",
+  preNote:n=>`Les précommandes ouvrent bientôt. Merci de votre intérêt pour ${n} !`,
+  copied:"Copié. Collez-le dans votre boutique.",copyFail:"La copie n’est pas permise ici. Sélectionnez le texte ci-dessus pour le copier.",
+  noResults:q=>`Aucun savon ne correspond à « ${q} ».`,results:(n,q)=>`${n} savon${n>1?"s":""} pour « ${q} ».`,
+  keyIngr:"Ingrédients clés",no:"N°",madeIn:"Fabriqué au Québec, Canada",title:"Liajer Savonnerie",cartLabel:"Panier, 0 article",
+  altTile:n=>`Savon Liajer ${n} avec son étiquette`,altBanner:"Un savon rose fait main garni de pétales de rose séchés, sur une table de bois"}
+};
+const ADD={"nude": {"en": [], "fr": []}, "morning-grace": {"en": ["Lavender essential oil", "Bergamot essential oil"], "fr": ["Huile essentielle de lavande", "Huile essentielle de bergamote"]}, "botanical-calm": {"en": ["Lavender essential oil", "Oat flour", "Geranium essential oil", "Cedarwood essential oil"], "fr": ["Huile essentielle de lavande", "Farine d’avoine", "Huile essentielle de géranium", "Huile essentielle de cèdre"]}, "citrus-burst": {"en": ["Sweet orange essential oil", "Litsea cubeba essential oil", "Turmeric powder", "Moroccan lava clay"], "fr": ["Huile essentielle d’orange douce", "Huile essentielle de litsea cubeba", "Curcuma en poudre", "Argile de lave du Maroc"]}, "spa-fresh": {"en": ["French green clay", "Peppermint essential oil", "Eucalyptus essential oil", "Rosemary essential oil", "Spirulina powder"], "fr": ["Argile verte française", "Huile essentielle de menthe poivrée", "Huile essentielle d’eucalyptus", "Huile essentielle de romarin", "Spiruline en poudre"]}, "forest-veil": {"en": ["Siberian fir essential oil", "Lemon essential oil"], "fr": ["Huile essentielle de sapin de Sibérie", "Huile essentielle de citron"]}, "solace-cove": {"en": ["Bergamot essential oil", "Kaolin clay", "Litsea cubeba essential oil", "Cypress essential oil", "Indigo powder"], "fr": ["Huile essentielle de bergamote", "Argile kaolin", "Huile essentielle de litsea cubeba", "Huile essentielle de cyprès", "Indigo en poudre"]}, "afterglow": {"en": ["Kaolin clay", "Lavender essential oil", "Patchouli essential oil", "Sweet orange essential oil", "Madder root powder"], "fr": ["Argile kaolin", "Huile essentielle de lavande", "Huile essentielle de patchouli", "Huile essentielle d’orange douce", "Racine de garance en poudre"]}, "first-blush": {"en": ["Geranium essential oil", "Palmarosa essential oil", "Oat flour", "French pink clay", "Bergamot essential oil", "Madder root powder"], "fr": ["Huile essentielle de géranium", "Huile essentielle de palmarosa", "Farine d’avoine", "Argile rose française", "Huile essentielle de bergamote", "Racine de garance en poudre"]}, "limonelle": {"en": ["Lemon essential oil", "Kaolin clay", "Litsea cubeba essential oil", "Grapefruit essential oil", "Turmeric powder"], "fr": ["Huile essentielle de citron", "Argile kaolin", "Huile essentielle de litsea cubeba", "Huile essentielle de pamplemousse", "Curcuma en poudre"]}};
+const ING={
+"Olive oil":["Huile d’olive","Olea Europaea (Olive) Fruit Oil"],
+"Water":["Eau","Aqua"],
+"Coconut oil":["Huile de coco","Cocos Nucifera (Coconut) Oil"],
+"Mango seed butter":["Beurre de mangue","Mangifera Indica (Mango) Seed Butter"],
+"Shea butter":["Beurre de karité","Butyrospermum Parkii (Shea) Butter"],
+"Sodium hydroxide (lye)":["Hydroxyde de sodium (soude caustique)","Sodium Hydroxide"],
+"Castor oil":["Huile de ricin","Ricinus Communis (Castor) Seed Oil"],
+"Lavender essential oil":["Huile essentielle de lavande","Lavandula Angustifolia (Lavender) Oil","A soft floral note.","Une douce note florale."],
+"Bergamot essential oil":["Huile essentielle de bergamote","Citrus Aurantium Bergamia (Bergamot) Peel Oil","Bright and gently citrus.","Lumineuse et doucement agrumée."],
+"Lavender flowers":["Fleurs de lavande","Lavandula Angustifolia (Lavender) Flower","Dried buds on top of the bar.","Boutons séchés sur le dessus du savon."],
+"Oat flour":["Farine d’avoine","Avena Sativa (Oat) Kernel Flour","Finely ground oats for a soft texture.","Avoine finement moulue pour une texture douce."],
+"Geranium essential oil":["Huile essentielle de géranium","Pelargonium Graveolens Flower Oil","A rosy, green note.","Une note rosée et verte."],
+"Cedarwood essential oil":["Huile essentielle de cèdre","Cedrus Deodara Wood Oil","Warm and woody.","Chaude et boisée."],
+"Sweet orange essential oil":["Huile essentielle d’orange douce","Citrus Aurantium Dulcis (Orange) Peel Oil","Sunny and sweet.","Ensoleillée et douce."],
+"Litsea cubeba essential oil":["Huile essentielle de litsea cubeba","Litsea Cubeba Fruit Oil","A fresh, lemony lift.","Une touche fraîche et citronnée."],
+"Turmeric powder":["Curcuma en poudre","Curcuma Longa (Turmeric) Root Powder","A natural golden colour.","Une couleur dorée naturelle."],
+"Moroccan lava clay":["Argile de lave du Maroc","Moroccan Lava Clay","A silky mineral clay.","Une argile minérale soyeuse."],
+"French green clay":["Argile verte française","Illite (French Green Clay)","A mineral clay with a soft green tint.","Une argile minérale d’un vert doux."],
+"Peppermint essential oil":["Huile essentielle de menthe poivrée","Mentha Piperita (Peppermint) Oil","Cool and fresh.","Fraîche et vivifiante."],
+"Eucalyptus essential oil":["Huile essentielle d’eucalyptus","Eucalyptus Globulus Leaf Oil","Clean and airy.","Propre et aérienne."],
+"Rosemary essential oil":["Huile essentielle de romarin","Rosmarinus Officinalis (Rosemary) Leaf Oil","Green and herbal.","Verte et herbacée."],
+"Spirulina powder":["Spiruline en poudre","Spirulina Platensis Powder","A natural sage colour.","Une couleur sauge naturelle."],
+"Siberian fir essential oil":["Huile essentielle de sapin de Sibérie","Abies Sibirica Needle Oil","Crisp forest needles.","Des aiguilles de forêt vivifiantes."],
+"Lemon essential oil":["Huile essentielle de citron","Citrus Limon (Lemon) Peel Oil","Fresh, bright citrus.","Un agrume frais et lumineux."],
+"Kaolin clay":["Argile kaolin","Kaolin","A gentle white clay.","Une argile blanche douce."],
+"Cypress essential oil":["Huile essentielle de cyprès","Cupressus Sempervirens Leaf Oil","Fresh and woody.","Fraîche et boisée."],
+"Indigo powder":["Indigo en poudre","Indigofera Tinctoria Leaf Powder","A natural soft blue colour.","Un bleu doux naturel."],
+"Patchouli essential oil":["Huile essentielle de patchouli","Pogostemon Cablin Leaf Oil","Earthy and warm.","Terreuse et chaleureuse."],
+"Madder root powder":["Racine de garance en poudre","Rubia Tinctorum Root Powder","A natural rosy colour.","Une couleur rosée naturelle."],
+"Palmarosa essential oil":["Huile essentielle de palmarosa","Cymbopogon Martini Oil","Soft and rose-like.","Douce, aux accents de rose."],
+"French pink clay":["Argile rose française","Illite (French Pink Clay)","A gentle pink clay.","Une argile rose douce."],
+"Grapefruit essential oil":["Huile essentielle de pamplemousse","Citrus Paradisi (Grapefruit) Peel Oil","Zesty and juicy.","Vive et juteuse."],
+"Calendula petals":["Pétales de calendula","Calendula Officinalis Flower","Petals on top of the bar.","Pétales sur le dessus du savon."],
+"Rose petals":["Pétales de rose","Rosa Damascena Flower","Dried petals on top of the bar.","Pétales séchés sur le dessus du savon."]
+};
+const ALLERGEN={en:"Contains essential oils, which naturally contain fragrance compounds that some people are sensitive to. Coconut oil is included in every bar.",fr:"Contient des huiles essentielles, qui renferment naturellement des composés odorants auxquels certaines personnes sont sensibles. Chaque savon contient de l’huile de coco."};
+const OPTS={
+ "morning-grace":{img:"Morning_Grace_lav3",key:"Lavender flowers",dEn:" Finished with a sprinkle of dried lavender buds.",dFr:" Garni d’une touche de boutons de lavande séchés.",
+   en:{withL:"With lavender buds",note:"A light sprinkle of dried lavender buds graces about a third of the top of the bar."},
+   fr:{withL:"Avec boutons de lavande",note:"Une légère touche de boutons de lavande séchés orne environ le tiers du dessus du savon."}},
+ "first-blush":{img:"First_Blush_rose",key:"Rose petals",extraEn:"Rose petals (with topping only)",extraFr:"Pétales de rose (avec garniture seulement)",
+   en:{withL:"With rose petals",note:"A light sprinkle of dried rose petals graces about a third of the top of the bar."},
+   fr:{withL:"Avec pétales de rose",note:"Une légère touche de pétales de rose séchés orne environ le tiers du dessus du savon."}},
+ "botanical-calm":{img:"Botanical_Calm_cal2",key:"Calendula petals",extraEn:"Calendula petals (with topping only)",extraFr:"Pétales de calendula (avec garniture seulement)",
+   en:{withL:"With calendula petals",note:"A light sprinkle of calendula petals graces about a third of the top of the bar."},
+   fr:{withL:"Avec pétales de calendula",note:"Une légère touche de pétales de calendula orne environ le tiers du dessus du savon."}}
+};
+let topping="without", qty=1, cart=[];
+const BASE_EN=["Olive oil","Water","Coconut oil","Mango seed butter","Shea butter","Sodium hydroxide (lye)","Castor oil"];
+const BASE_L1={en:["Olive oil","Coconut oil","Mango seed butter","Shea butter","Castor oil"],fr:["Huile d’olive","Huile de coco","Beurre de mangue","Beurre de karité","Huile de ricin"]};
+const BASE_L2={en:["Water","Sodium hydroxide (lye)"],fr:["Eau","Hydroxyde de sodium (soude caustique)"]};
+const BASE_FR=["Huile d’olive","Eau","Huile de coco","Beurre de mangue","Beurre de karité","Hydroxyde de sodium (soude caustique)","Huile de ricin"];
+const addOf=s=>ADD[s.slug][lang];
+const addText=s=>addOf(s).length?addOf(s).join(" · "):T[lang].noAdd;
+const inci=s=>BASE+s.extra+".";
+const bagSvg='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7h14l-1 13H6L5 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/><path d="M9 11a3 3 0 0 0 6 0"/></svg>';
+const $=id=>document.getElementById(id);
+let lang="en", current=null, query="";
+
+const nameOf=s=>lang==="fr"?s.fr:s.en, altName=s=>lang==="fr"?s.en:s.fr;
+const notesOf=s=>lang==="fr"?FR[s.slug].notes:s.notes, chipsOf=s=>lang==="fr"?FR[s.slug].chips:s.chips;
+const route=r=>lang==="fr"?(r==="home"?"fr":"fr-"+r):r;
+function parse(){
+  let h=location.hash.replace("#","");
+  if(h==="fr"||h.startsWith("fr-")){lang="fr";h=h==="fr"?"home":h.slice(3);} else lang="en";
+  return h||"home";
+}
+function extraTags(s){
+  const a=ADD[s.slug].en.join(" ").toLowerCase(); let t="";
+  if(a.includes("oat")) t+=" oats colloidal oatmeal avoine flocons";
+  if(/clay|turmeric|madder|indigo|spirulina/.test(a)) t+=" colour colouring color coloring colorant natural colour couleur colorant naturel";
+  if(a.includes("clay")) t+=" clays argiles";
+  if(a.includes("essential oil")) t+=" essential oils huiles essentielles scent scented parfum";
+  if(!ADD[s.slug].en.length) t+=" unscented fragrance-free sans parfum sensitive peau sensible";
+  return t;
+}
+function matches(s,q){
+  if(!q) return true; q=q.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  const hay=[s.en,s.fr,s.no,...s.notes,...s.chips,...FR[s.slug].notes,...FR[s.slug].chips,...ADD[s.slug].en,...ADD[s.slug].fr,s.desc,s.descFr,extraTags(s)].join(" ").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  return hay.includes(q);
+}
+function drawGrid(){
+  const t=T[lang]; const list=SOAPS.filter(s=>matches(s,query));
+  let html=list.map(s=>`
+  <a class="card" href="#${route("soap-"+s.slug)}">
+    <div class="ph"><span class="badge">${t.badge}</span><img src="tile_${s.file}.jpg" alt="${t.altTile(nameOf(s))}" loading="lazy"></div>
+    <h3>${nameOf(s)}</h3>
+    <p class="notes"><b class="num">${t.no} ${s.no}</b> · ${addText(s)}</p>
+    <p class="wt">100 g</p>
+    <div class="foot"><span class="price">${t.price}</span><span class="bag">${bagSvg}</span></div>
+  </a>`).join("");
+  const b0=BOXES[0]; const packMatch=!query||[b0.en,b0.fr,"10","pack","coffret","gift","cadeau",...b0.slugs.map(x=>{const z=SOAPS.find(s=>s.slug===x);return z.en+" "+z.fr;})].join(" ").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").includes(query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""));
+  if(packMatch) html+=packCard();
+  if(query) html=`<p class="noresults" role="status">${list.length?t.results(list.length,query):t.noResults(query)}</p>`+html;
+  $("grid").innerHTML=html;
+  drawBoxes();
+}
+function applyLang(){
+  const t=T[lang];
+  $("os-img").alt=lang==="fr"?"Filomena et ses deux fils, souriants":"Filomena and her two sons smiling";
+  { const one=`<span class="tk-item"><b>${t.hnKicker}</b><span>${t.hnText}</span><i>✦</i></span><span class="tk-item"><b>${t.ldKicker}</b><span>${t.ldText}</span><i>✦</i></span>`; $("tk-track").innerHTML=one.repeat(8); document.querySelector(".ticker").setAttribute("aria-label",t.hnKicker); }
+  $("faq-list").innerHTML=t.faq.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
+  const chip=a=>a.map(x=>`<li>${x}</li>`).join(""); $("base-l1").innerHTML=chip(BASE_L1[lang]); $("base-l2").innerHTML=chip(BASE_L2[lang]); document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i]").forEach(el=>{const v=t[el.dataset.i]; if(typeof v==="string") el.textContent=v;});
+  $("q").placeholder=t.searchPh;
+  document.querySelectorAll("[data-route]").forEach(a=>a.href="#"+route(a.dataset.route));
+  document.querySelector(".hero img").alt=t.altBanner;
+  $("lang-fr").setAttribute("aria-current",lang==="fr"); $("lang-en").setAttribute("aria-current",lang==="en");
+}
+function showImg(which){
+  const s=current; const tile=which==="tile";
+  const o=OPTS[s.slug]; const f=(o&&o.img&&topping==="with")?o.img:s.file;
+  $("p-img").src=tile?`tile_${f}.jpg`:`photo_${f}.jpg`; $("p-img").style.objectFit=tile?"cover":"contain";
+  $("t-tile-img").src=`tile_${f}.jpg`; $("t-photo-img").src=`photo_${f}.jpg`;
+  $("p-img").alt=T[lang].altTile(nameOf(s));
+  $("t-tile").setAttribute("aria-pressed",tile); $("t-photo").setAttribute("aria-pressed",!tile);
+}
+function renderOpt(s){
+  const o=OPTS[s.slug], t=T[lang];
+  $("opt").classList.toggle("hidden",!o); if(!o) return;
+  $("opt-legend").textContent=t.optLegend;
+  $("opt-with-l").textContent=o[lang].withL; $("opt-without-l").textContent=t.withoutL;
+  $("opt-with").checked=topping==="with"; $("opt-without").checked=topping==="without";
+  $("opt-note").textContent=topping==="with"?o[lang].note:t.withoutNote;
+}
+function render(){
+  const h=parse(); applyLang(); drawGrid(); const t=T[lang];
+  const nav=document.querySelectorAll("nav.main a");
+  const setNav=k=>nav.forEach(a=>{ if(a.dataset.nav===k) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  $("packpage").classList.add("hidden");
+  if(h==="pack-10"){
+    const b=BOXES[0];
+    $("home").classList.add("hidden"); $("product").classList.add("hidden"); $("packpage").classList.remove("hidden");
+    $("pk-name").textContent=lang==="fr"?b.fr:b.en; $("pk-fr").textContent="";
+    $("pk-no").textContent=`${t.no} 10 · ${t.packWt}`;
+    $("pk-price").textContent=money(BOXPRICE); $("pk-was").textContent=plain(60);
+    $("pk-img").alt=`${lang==="fr"?b.fr:b.en}: ${b.slugs.map(x=>nameOf(SOAPS.find(s=>s.slug===x))).join(", ")}`;
+    $("pk-list").innerHTML=b.slugs.map(x=>{const s=SOAPS.find(y=>y.slug===x);return `<h3><a href="#${route("soap-"+s.slug)}">${s.no} ${nameOf(s)}</a></h3><p class="d">${addOf(s).join(" · ")}</p>`;}).join("");
+    pqty=1; $("pq-val").textContent=1;
+    $("lang-fr").href="#fr-pack-10"; $("lang-en").href="#pack-10";
+    document.title=(lang==="fr"?b.fr:b.en)+" · Liajer"; setNav("shop"); window.scrollTo(0,0); return;
+  }
+  if(h.startsWith("soap-")){
+    const i=Math.max(0,SOAPS.findIndex(s=>"soap-"+s.slug===h)); const s=SOAPS[i]; if(current!==s) topping="without"; current=s;
+    $("home").classList.add("hidden"); $("product").classList.remove("hidden");
+    $("p-no").textContent=`${t.no} ${s.no} · ${addOf(s).length?addOf(s).join(" · "):t.noAdd}`;
+    $("p-name").textContent=nameOf(s); $("p-fr").textContent="";
+    $("p-desc").textContent=(lang==="fr"?s.descFr:s.desc)+((OPTS[s.slug]&&topping==="with"&&OPTS[s.slug].dEn)?(lang==="fr"?OPTS[s.slug].dFr:OPTS[s.slug].dEn):""); $("p-desc").lang=lang;
+    const addsEn=ADD[s.slug].en.concat(OPTS[s.slug]&&OPTS[s.slug].key&&topping==="with"?[OPTS[s.slug].key]:[]);
+    $("p-made").innerHTML=addsEn.length?addsEn.map(k=>`<h3>${lang==="fr"?ING[k][0]:k}</h3><p class="d">${lang==="fr"?ING[k][3]:ING[k][2]}</p>`).join(""):`<h3>${lang==="fr"?"Rien d’autre":"Nothing else"}</h3><p class="d">${t.noAdd}.</p>`;
+    $("fi-name").textContent=nameOf(s);
+    const all=BASE_EN.concat(addsEn);
+    $("fi-inci").innerHTML=`<b>${lang==="fr"?"INGRÉDIENTS :":"INGREDIENTS:"}</b> ${all.map(k=>ING[k][1]).join(", ")}.`;
+    $("fi-table").innerHTML=all.map(k=>`<tr><td>${lang==="fr"?ING[k][0]:k}</td><td>${ING[k][1]}</td></tr>`).join("");
+    $("allergen-text").textContent=s.slug==="nude"?(lang==="fr"?"Ne contient aucune huile essentielle ni parfum.":"Contains no essential oils or fragrance."):(lang==="fr"?"Contient des huiles essentielles, qui renferment naturellement des composés odorants auxquels certaines personnes sont sensibles.":"Contains essential oils, which naturally contain fragrance compounds that some people are sensitive to.");
+    renderOpt(s); qty=1; $("q-val").textContent=1;
+        showImg("tile"); $("pre-note").textContent=""; $("copy-note").textContent="";
+    const p=SOAPS[(i-1+SOAPS.length)%SOAPS.length], n=SOAPS[(i+1)%SOAPS.length];
+    $("prev").href="#"+route("soap-"+p.slug); $("prev").querySelector("b").textContent=nameOf(p);
+    $("next").href="#"+route("soap-"+n.slug); $("next").querySelector("b").textContent=nameOf(n);
+    $("lang-fr").href="#fr-soap-"+s.slug; $("lang-en").href="#soap-"+s.slug;
+    document.title=nameOf(s)+" · Liajer"; setNav("shop"); window.scrollTo(0,0);
+  } else {
+    $("product").classList.add("hidden"); $("home").classList.remove("hidden");
+    const key=["shop","story","faq","contact"].includes(h)?h:"home";
+    $("lang-fr").href="#"+(key==="home"?"fr":"fr-"+key); $("lang-en").href="#"+key;
+    document.title=t.title; setNav(key);
+    const target={story:$("story-section"),shop:$("shop-section"),faq:$("faq-section"),contact:$("contact-section")}[key]||null;
+    if(target) requestAnimationFrame(()=>target.scrollIntoView({block:"start"})); else window.scrollTo(0,0);
+  }
+}
+document.querySelectorAll("input[name=topping]").forEach(r=>r.addEventListener("change",e=>{topping=e.target.value; const y=scrollY; render(); scrollTo(0,y); showImg($("t-tile").getAttribute("aria-pressed")==="true"?"tile":"photo");}));
+$("pq-minus").onclick=()=>{pqty=Math.max(1,pqty-1);$("pq-val").textContent=pqty;};
+$("pq-plus").onclick=()=>{pqty=Math.min(20,pqty+1);$("pq-val").textContent=pqty;};
+$("pk-add").onclick=()=>{const id=BOXES[0].id;const ex=cart.find(i=>i.slug===id); if(ex) ex.qty+=pqty; else cart.push({slug:id,box:true,qty:pqty}); openDrawer();};
+$("t-tile").onclick=()=>showImg("tile"); $("t-photo").onclick=()=>showImg("photo");
+$("preorder").onclick=()=>{ const o=OPTS[current.slug]; const top=o?(topping==="with"?"with":"without"):null;
+  const ex=cart.find(i=>i.slug===current.slug&&i.top===top); if(ex) ex.qty+=qty; else cart.push({slug:current.slug,top,qty});
+  updCart(); $("pre-note").textContent=""; openDrawer(); };
+$("q-minus").onclick=()=>{ qty=Math.max(1,qty-1); $("q-val").textContent=qty; };
+$("q-plus").onclick=()=>{ qty=Math.min(20,qty+1); $("q-val").textContent=qty; };
+$("copy").onclick=async()=>{
+  const s=current;
+  const txt=`${s.fr} / ${s.en} · N° ${s.no} · 10 $ / $10\n\n${s.descFr}\n\n${s.desc}\n\nBase : ${BASE_FR.join(", ")}.\nAjouts : ${ADD[s.slug].fr.length?ADD[s.slug].fr.join(", "):"aucun"}.\n\nBase: ${BASE_EN.join(", ")}.\nAdded: ${ADD[s.slug].en.length?ADD[s.slug].en.join(", "):"none"}.${OPTS[s.slug]?`\n\nGarniture : ${OPTS[s.slug].fr.withL.toLowerCase()} ou sans garniture. ${OPTS[s.slug].fr.note}\nTopping: ${OPTS[s.slug].en.withL.toLowerCase()} or without topping. ${OPTS[s.slug].en.note}`:""}\n\n100 g / 3.5 oz · Fabriqué au Québec, Canada / Made in Québec, Canada`;
+  try{ await navigator.clipboard.writeText(txt); $("copy-note").textContent=T[lang].copied; }
+  catch(e){ $("copy-note").textContent=T[lang].copyFail; }
+};
+// search: filters the soap grid as you type, from any page
+function norm(x){return x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
+function searchItems(q){
+  const nq=norm(q); const out=SOAPS.filter(s=>matches(s,q)).sort((a,b)=>(norm(a.en+" "+a.fr).includes(nq)?0:1)-(norm(b.en+" "+b.fr).includes(nq)?0:1)).map(s=>({href:"#"+route("soap-"+s.slug),img:`tile_${s.file}.jpg`,name:nameOf(s),sub:`${T[lang].no} ${s.no} · ${addOf(s).length?addOf(s).slice(0,3).join(", "):T[lang].noAdd}`}));
+  const b0=BOXES[0]; const hay=norm([b0.en,b0.fr,"10 pack coffret gift cadeau six",...b0.slugs.map(x=>{const z=SOAPS.find(s=>s.slug===x);return z.en+" "+z.fr;})].join(" "));
+  if(hay.includes(norm(q))) out.push({href:"#"+route("pack-10"),img:`${b0.img}.jpg`,name:lang==="fr"?b0.fr:b0.en,sub:`${T[lang].no} 10 · ${T[lang].bxCartSub}`});
+  return out;
+}
+function showResults(){
+  const q=$("q").value.trim(), box=$("q-results");
+  if(!q){ box.classList.add("hidden"); $("q").setAttribute("aria-expanded","false"); return; }
+  const r=searchItems(q);
+  box.innerHTML=r.length? r.slice(0,7).map(i=>`<a href="${i.href}" role="option"><img src="${i.img}" alt=""><span><b>${i.name}</b><small>${i.sub}</small></span></a>`).join("")+`<a class="q-all" href="#${route("shop")}">${lang==="fr"?"Voir tous les résultats":"See all results"} (${r.length})</a>`
+    : `<div class="q-empty">${T[lang].noResults(q)}</div>`;
+  box.classList.remove("hidden"); $("q").setAttribute("aria-expanded","true");
+  box.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{ if(a.classList.contains("q-all")){query=q;} else {$("q").value="";query="";} box.classList.add("hidden"); }));
+}
+$("q").addEventListener("input",e=>{ query=e.target.value.trim(); drawGrid(); showResults(); });
+$("q").addEventListener("focus",showResults);
+document.addEventListener("click",e=>{ if(!e.target.closest(".search")) $("q-results").classList.add("hidden"); });
+$("q").addEventListener("keydown",e=>{ if(e.key==="Escape"){ $("q-results").classList.add("hidden"); } });
+$("search-form").addEventListener("submit",e=>{ e.preventDefault(); query=$("q").value.trim(); $("q-results").classList.add("hidden");
+  if(location.hash.replace("#","")!==route("shop")) location.hash=route("shop"); else { drawGrid(); $("shop-section").scrollIntoView({block:"start"}); } });
+// cart
+const PRICE=10, BOXPRICE=54;
+const BOXES=[
+ {id:"pack-10",img:"tile_Pack_10b",en:"The Six Pack",fr:"Le Coffret Six",slugs:["botanical-calm","citrus-burst","spa-fresh","forest-veil","solace-cove","afterglow"],
+  dEn:"Six favourites, without toppings, with a free soap dish.",dFr:"Six favoris, sans garniture, avec un porte-savon offert."}
+];
+function packCard(){
+  const t=T[lang], b=BOXES[0];
+  return `<a class="card pack" href="#${route("pack-10")}">
+    <div class="ph"><span class="badge">${t.badge}</span><img src="${b.img}.jpg" alt="${lang==="fr"?b.fr:b.en}: ${b.slugs.map(x=>nameOf(SOAPS.find(s=>s.slug===x))).join(", ")}" loading="lazy"></div>
+    <h3>${lang==="fr"?b.fr:b.en}</h3>
+    <p class="notes"><b class="num">${t.no} 10</b> · ${b.slugs.map(x=>nameOf(SOAPS.find(s=>s.slug===x))).join(" · ")}</p>
+    <p class="gifttag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="8" width="18" height="4"/><path d="M12 8v13M5 12v9h14v-9"/><path d="M12 8c-2-4-6-4-6-1.5S9 8 12 8zm0 0c2-4 6-4 6-1.5S15 8 12 8z"/></svg>${t.giftTitle}${lang==="fr"?"\u00a0:":":"} ${t.giftShort}</p>
+    <p class="wt">${t.packWt}</p>
+    <div class="foot"><span><span class="price">${money(BOXPRICE)}</span> <span class="was">${plain(60)}</span></span><span class="bag">${bagSvg}</span></div>
+  </a>`;
+}
+function drawBoxes(){}
+let pqty=1;
+const money=n=>lang==="fr"?`${n} $ CAD`:`$${n} CAD`; const plain=n=>lang==="fr"?`${n} $`:`$${n}`;
+function itemImg(i){if(i.box) return null;const o=OPTS[i.slug];if(o&&i.top==="with"&&o.img) return o.img;const f=SOAPS.find(s=>s.slug===i.slug).file;return (o&&o.img&&i.top==="with")?o.img:f;}
+function itemSub(i){if(i.box) return T[lang].bxCartSub;const o=OPTS[i.slug];if(!o) return "100 g";return (i.top==="with"?o[lang].withL:T[lang].withoutL)+" · 100 g";}
+function cartTotal(){return cart.reduce((a,i)=>a+i.qty*(i.box?BOXPRICE:PRICE),0);}
+function updCart(){
+  const n=cart.reduce((a,i)=>a+i.qty,0); document.querySelector(".cart .count").textContent=n; $("fab-count").textContent=n;
+  $("cart").setAttribute("aria-label",(lang==="fr"?"Panier, ":"Cart, ")+n);
+  $("dr-items").innerHTML=cart.map((i,k)=>{const bx=i.box&&BOXES.find(x=>x.id===i.slug);const s=bx?null:SOAPS.find(x=>x.slug===i.slug);const nm=bx?(lang==="fr"?bx.fr:bx.en):nameOf(s);const img=bx?`${bx.img}.jpg`:`tile_${itemImg(i)}.jpg`;const pr=bx?BOXPRICE:PRICE;return `<li><img src="${img}" alt=""><div><b>${nm}</b><small>${itemSub(i)} · ${T[lang].qty} ${i.qty}</small><br><button type="button" class="rm" data-k="${k}">${T[lang].remove}</button></div><span>${money(i.qty*pr)}</span></li>`;}).join("");
+  $("dr-empty").classList.toggle("hidden",n>0); $("to-details").disabled=n===0; $("to-details").style.opacity=n?1:.4;
+  const tot=cartTotal(); $("dr-sub").textContent=money(tot); $("dr-total2").textContent=money(tot);
+  document.querySelectorAll(".rm").forEach(b=>b.onclick=()=>{cart.splice(+b.dataset.k,1);updCart();});
+}
+function step(id){["step-cart","step-details","step-done"].forEach(x=>$(x).classList.toggle("hidden",x!==id));}
+function openDrawer(){ updCart(); step("step-cart"); $("drawer").classList.remove("hidden"); $("drawer-back").classList.remove("hidden"); $("dr-close").focus(); }
+function closeDrawer(){ $("drawer").classList.add("hidden"); $("drawer-back").classList.add("hidden"); }
+$("cart").addEventListener("click",openDrawer); $("fab-cart").addEventListener("click",openDrawer);
+$("dr-close").onclick=closeDrawer; $("drawer-back").onclick=closeDrawer; $("done-close").onclick=closeDrawer;
+addEventListener("keydown",e=>{ if(e.key==="Escape") closeDrawer(); });
+$("to-details").onclick=()=>step("step-details");
+$("back-cart").onclick=()=>step("step-cart");
+$("step-details").addEventListener("submit",e=>{ e.preventDefault();
+  const nm=$("o-name").value.trim(), em=$("o-email").value.trim();
+  const ad=$("o-addr").value.trim();
+  if(!nm||!/.+@.+\..+/.test(em)||!ad){ $("o-note").textContent=T[lang].oMissing; return; }
+  const no="LJ-"+String(Date.now()).slice(-5); const pay="p1"; const tot=money(cartTotal());
+  $("done-title").textContent=T[lang].doneTitle(no); $("done-text").textContent=T[lang].doneText(pay,em,tot,no);
+  $("done-items").innerHTML=cart.map(i=>{const bx=i.box&&BOXES.find(x=>x.id===i.slug);if(bx) return `<li><span>${i.qty} × ${lang==="fr"?bx.fr:bx.en} (${T[lang].bxCartSub.toLowerCase()})</span><span>${money(i.qty*BOXPRICE)}</span></li>`;const s=SOAPS.find(x=>x.slug===i.slug);return `<li><span>${i.qty} × ${nameOf(s)}${OPTS[i.slug]?" ("+itemSub(i).split(" · ")[0].toLowerCase()+")":""}</span><span>${money(i.qty*PRICE)}</span></li>`;}).join("")+`<li><b>${T[lang].total}</b><b>${tot}</b></li>`;
+  step("step-done"); cart=[]; updCart(); $("o-note").textContent="";
+});
+$("c-form").addEventListener("submit",e=>{ e.preventDefault();
+  const nm=$("c-name").value.trim(), em=$("c-email").value.trim(), msg=$("c-msg").value.trim();
+  if(!nm||!em||!msg){ $("c-note").textContent=T[lang].cMissing; return; }
+  const sub=encodeURIComponent("Liajer · "+$("c-topic").value); const body=encodeURIComponent(msg+"\n\n— "+nm+" ("+em+")");
+  $("c-note").textContent=T[lang].cThanks; location.href="mailto:info@liajer.com?subject="+sub+"&body="+body;
+});
+addEventListener("hashchange",()=>{ if(typeof closeDrawer==="function") closeDrawer(); render(); }); render();
+</script>
+</body>
+</html>
