@@ -411,10 +411,12 @@ footer img{height:70px;width:auto;opacity:.9}
 </head>
 <body>
 <!-- Netlify Forms: hidden copies so Netlify detects the two forms at deploy time -->
-<form name="order" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="order">
   <input name="bot-field"><input name="order-no"><input name="name"><input name="email"><input name="phone"><input name="area"><textarea name="address"></textarea><textarea name="notes"></textarea><textarea name="items"></textarea><input name="total"><input name="language">
 </form>
-<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="contact">
   <input name="bot-field"><input name="name"><input name="email"><input name="topic"><textarea name="message"></textarea><input name="language">
 </form>
 <header class="site">
